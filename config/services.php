@@ -40,4 +40,16 @@ return [
         ],
     ],
 
+    'facebook' => [ 
+        'client_id' => env ( 'FB_CLIENT_ID' ),
+        'client_secret' => env ( 'FB_CLIENT_SECRET' ),
+        'redirect' => env ( 'FB_REDIRECT' ) 
+    ],
+
+    'twitter' => [ 
+        'client_id' => env ( 'TW_CLIENT_ID' ),
+        'client_secret' => env ( 'TW_CLIENT_SECRET' ),
+        'redirect' => env ( 'TW_REDIRECT' ) 
+    ],
+
 ];
