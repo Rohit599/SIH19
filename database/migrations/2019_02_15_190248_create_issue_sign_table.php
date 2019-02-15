@@ -14,8 +14,8 @@ class CreateIssueSignTable extends Migration
     public function up()
     {
         Schema::create('issue_sign', function (Blueprint $table) {
-            $table->integer('issue_id');
-            $table->integer('user_id');
+            $table->unsignedInteger('issue_id');
+            $table->unsignedInteger('user_id');
         });
     }
 

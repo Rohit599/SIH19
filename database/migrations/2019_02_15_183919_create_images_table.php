@@ -16,7 +16,7 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
             $table->string('location');
-            $table->integer('issue_id');
+            $table->unsignedInteger('issue_id');
             $table->boolean('is_cover');
         });
     }

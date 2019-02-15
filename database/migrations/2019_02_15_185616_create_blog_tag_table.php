@@ -14,8 +14,8 @@ class CreateBlogTagTable extends Migration
     public function up()
     {
         Schema::create('blog_tag', function (Blueprint $table) {
-            $table->integer('blog_id');
-            $table->integer('tag_id');
+            $table->unsignedInteger('blog_id');
+            $table->unsignedInteger('tag_id');
         });
     }
 

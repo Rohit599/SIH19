@@ -14,8 +14,8 @@ class CreateIssueSourceTable extends Migration
     public function up()
     {
         Schema::create('issue_source', function (Blueprint $table) {
-            $table->integer('issue_id');
-            $table->integer('source_id');
+            $table->unsignedInteger('issue_id');
+            $table->unsignedInteger('source_id');
         });
     }
 

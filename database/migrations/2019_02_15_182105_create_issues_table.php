@@ -17,8 +17,8 @@ class CreateIssuesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->text('description');
-            $table->integer('pollution_id');
-            $table->integer('user_id');
+            $table->unsignedInteger('pollution_id');
+            $table->unsignedInteger('user_id');
             $table->decimal('latitude');
             $table->decimal('longitude');
             $table->string('document')->nullable();
