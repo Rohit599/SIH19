@@ -17,3 +17,13 @@ Route::get('/', function () {
 
 Route::get( '/redirect/{service}', 'SocialAuthController@redirect' );
 Route::get( '/callback/{service}', 'SocialAuthController@callback' );
+
+Route::post('issue', 'IssueController@store');
+
+Route::get('issues', 'IssueController@index');
+
+Route::get('issues/{issue}/edit', 'IssueController@edit');
+
+Route::put('issues/{issue}/update', 'IssueController@update');
+
+Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('event.destroy');
