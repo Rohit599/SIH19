@@ -1,4 +1,5 @@
 <?php
+use App\Pollution;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get( '/redirect/{service}', 'SocialAuthController@redirect' );
-Route::get( '/callback/{service}', 'SocialAuthController@callback' );
+Route::get('/redirect/{service}', 'SocialAuthController@redirect');
+Route::get('/callback/{service}', 'SocialAuthController@callback');
+
+Route::get('/issue/create', function () {
+    $pollutions = Pollution::all()->sortBy('name');
+    return view('user.add-issue')->with(compact('pollutions'));
+})->name('userCreateIssue');
 
 Route::post('issue', 'IssueController@store');
 
