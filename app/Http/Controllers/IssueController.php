@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Issue;
+use Validator;
 
 class IssueController extends Controller
 {
@@ -11,15 +12,19 @@ class IssueController extends Controller
     {
         $input = $request->all();
 
-        $this->validate($request, [
+        $validator = Validator::make($request->all(), [
             'title' => 'required|max:100',
             'description' => 'required',
             'pollution_id' => 'required|numeric',
             'latitude' => 'required|between:-90,90',
             'longitude' => 'required|between:-180,180',
-            'document' => 'required|max:100',
+            'upload_file' => 'file|mimetypes:pdf',
         ]);
-
+        if ($validator->fails()) {
+            return redirect('issue/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
         $issue = new Issue;
         $issue->title = $input['title'];
         $issue->description = $input['description'];
@@ -27,20 +32,16 @@ class IssueController extends Controller
         $issue->pollution_id = $input['pollution_id'];
         $issue->latitude = $input['latitude'];
         $issue->longitude = $input['longitude'];
-        $issue->document = $input['document'];
-        if (!is_null($input['winner2_amount'])) {
-            $issue->winner2 = $input['winner2_amount'];
+        if ($request->file('upload_file')->isValid()) {
+            $uniqueFileName = uniqid() . $request->get('upload_file')->getClientOriginalName() . '.' . $request->get('upload_file')->getClientOriginalExtension();
+
+            $request->get('upload_file')->move(public_path('files') . $uniqueFileName);
         }
-        $issue->contact_name = $input['contact_name'];
-        $issue->contact_no = $input['contact_number'];
-        if (is_null($input['is_active'])) {
-            $issue->is_active = 0;
-        } else {
-            $issue->is_active = 1;
-        }
+        dd($uniqueFileName);
+        $issue->document = $uniqueFileName;
         $issue->save();
 
-        return back()->with(['msg' =>'issue added successfully.', 'class' => 'alert-success']);
+        // return back()->with(['msg' =>'issue added successfully.', 'class' => 'alert-success']);
     }
 
     public function index()

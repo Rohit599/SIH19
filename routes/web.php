@@ -24,7 +24,7 @@ Route::get('/issue/create', function () {
     return view('user.add-issue')->with(compact('pollutions'));
 })->name('userCreateIssue');
 
-Route::post('issue', 'IssueController@store');
+Route::post('issue', 'IssueController@store')->name('issue.store');
 
 Route::get('issues', 'IssueController@index');
 
@@ -32,4 +32,4 @@ Route::get('issues/{issue}/edit', 'IssueController@edit');
 
 Route::put('issues/{issue}/update', 'IssueController@update');
 
-Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('event.destroy');
+Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('issue.destroy');
