@@ -33,6 +33,7 @@ class CreateForegionKey extends Migration
         });
         Schema::table('comments', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
         });
         Schema::table('issue_vote', function (Blueprint $table) {
             $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
@@ -51,7 +52,7 @@ class CreateForegionKey extends Migration
      */
     public function down()
     {
-        Schema::table('event', function (Blueprint $table) {
+        Schema::table('issues', function (Blueprint $table) {
             $table->dropForeign('issues_pollution_id_foreign');
             $table->dropIndex('issues_pollution_id_foreign');
             $table->dropForeign('issues_user_id_foreign');
@@ -80,6 +81,8 @@ class CreateForegionKey extends Migration
         Schema::table('comments', function (Blueprint $table) {
             $table->dropForeign('comments_user_id_foreign');
             $table->dropIndex('comments_user_id_foreign');
+            $table->dropForeign('comments_issue_id_foreign');
+            $table->dropIndex('comments_issue_id_foreign');
         });
         Schema::table('issue_vote', function (Blueprint $table) {
             $table->dropForeign('issue_vote_issue_id_foreign');
