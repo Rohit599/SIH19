@@ -1,6 +1,7 @@
 @extends('layouts.default')
 @section('content')
 <form action="{{ route('issue.store') }}" method="POST" enctype="multipart/form-data">
+	{{csrf_field()}}
 	<label for="title">Issue Title <font color="red">*</font></label>
 	<input type="text" name="title"><br>
 	<label for="description">Issue Description <font color="red">*</font></label>
