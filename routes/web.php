@@ -1,35 +1,38 @@
 <?php
 use App\Pollution;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('login');
 
 Route::get('/redirect/{service}', 'SocialAuthController@redirect');
 Route::get('/callback/{service}', 'SocialAuthController@callback');
 
-Route::get('/issue/create', function () {
-    $pollutions = Pollution::all()->sortBy('name');
-    return view('user.add-issue')->with(compact('pollutions'));
-})->name('userCreateIssue');
+Route::get('register', function () {
+    if (session()->has('u')) {
+        return view('register', ['user' => session('u')]);
+    } else {
+        return view('register');
+    }
+});
+Route::post('register', 'UserController@register')->name('user.register');
 
-Route::post('issue', 'IssueController@store')->name('issue.store');
+Route::post('login', 'UserController@login');
 
-Route::get('issues', 'IssueController@index');
+Route::get('logout', 'Auth\LoginController@logout');
 
-Route::get('issues/{issue}/edit', 'IssueController@edit');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('home', function () {
+        return view('home');
+    });
 
-Route::put('issues/{issue}/update', 'IssueController@update');
-
-Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('issue.destroy');
+    Route::get('/issue/create', function () {
+        $pollutions = Pollution::all()->sortBy('name');
+        return view('user.add-issue')->with(compact('pollutions'));
+    })->name('userCreateIssue');
+    Route::post('issue', 'IssueController@store')->name('issue.store');
+    Route::get('issues', 'IssueController@index');
+    Route::get('issues/{issue}/edit', 'IssueController@edit');
+    Route::put('issues/{issue}/update', 'IssueController@update');
+    Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('issue.destroy');
+});
