@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Socialite;
+use App\User;
 
 class SocialAuthController extends Controller
 {
@@ -15,7 +17,14 @@ class SocialAuthController extends Controller
     public function callback($service)
     {
         $user = Socialite::with($service)->user();
-        // dd($user);
-        return view('home')->with(compact('user'))->withService($service);
+        $u_id = User::select('id')->where('email', $user->email)->first();
+        if (empty($u_id)) {
+            $u['name'] = $user->name;
+            $u['email'] = $user->email;
+            return redirect('register')->with(['u' => $u]);
+        }
+
+        Auth::loginUsingId($user->id);
+        return view('home');
     }
 }
