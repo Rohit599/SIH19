@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<meta name="theme-color" content="#3d50b7">
+<meta name="theme-color" content="#999">
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
@@ -13,12 +13,13 @@
 <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="{{ url('css/mdb.min.css') }}" rel="stylesheet">
+<link href="{{ url('css/style.css') }}" rel="stylesheet">
 <style> 
-body {
-  background-color: #e9ecef;
+/*body {
+  background-color: #fff;
 }
 main {
     padding-top: 100px;
-}
+}*/
 </style>
 @yield('css')
