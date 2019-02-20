@@ -1,20 +1,15 @@
 @extends('layouts.default')
 @section('content')
-@if($service == 'facebook')
 <div class="title m-b-md">
-    Welcome {{ $user->getName() }} ! <br> .
     <a href="{{url('/issue/create')}}">Add Issue</a>
+    <a href="{{url('/issues')}}">View All Existing Issues</a>
+    <a href="{{url('logout')}}">Logout</a>
 </div>
-@endif
-
-@if($service == 'twitter')
-<div class="title m-b-md">
-    Welcome {{ $user->getName() }} ! <br> 
-    <a href="{{url('/issue/create')}}">Add Issue</a>
-    {{-- Your username is : {{ $details->nickname }}<br>
-    Total Tweets : {{ $details->user['statuses_count']}}<br>
-    Followers : {{ $details->user['followers_count']}}<br>
-    Following : {{ $details->user['friends_count']}} --}}
+<div>
+	@if(isset($issues))
+		@foreach($issues as $issue)
+			{{$issue->title}}
+		@endforeach
+	@endif
 </div>
-@endif
 @stop

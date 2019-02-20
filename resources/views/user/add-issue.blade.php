@@ -7,7 +7,7 @@
 	<label for="description">Issue Description <font color="red">*</font></label>
 	<textarea name="description"></textarea><br>
 	<label for="title">Pollution Type <font color="red">*</font></label>
-	<select name="cars">
+	<select name="pollution">
 		@foreach($pollutions as $pollution)
 		<option value="{{$pollution->id}}">{{$pollution->name}}</option>
 		@endforeach
@@ -22,6 +22,15 @@
 	</form>
 	<div id="map" style="height: 400px; width: 400px; position: relative;">fsd</div>
 	<input type="submit" name="submit">
+	@if ($errors->any())
+	    <div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif
 	<script type="text/javascript">
 		
 

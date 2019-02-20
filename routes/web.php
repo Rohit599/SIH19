@@ -25,8 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('home', function () {
         return view('home');
     });
-
-    Route::get('/issue/create', function () {
+    Route::get('issue/create', function () {
         $pollutions = Pollution::all()->sortBy('name');
         return view('user.add-issue')->with(compact('pollutions'));
     })->name('userCreateIssue');
