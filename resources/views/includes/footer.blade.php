@@ -1,4 +1,4 @@
-<footer>
+<footer class="page-footer font-small blue pt-4 mt-4">
     &copy; All Rights Reserved by <a href="{{ url('/') }}" target="_blank">{{ config('app.name') }}</a>.
 </footer>
 
