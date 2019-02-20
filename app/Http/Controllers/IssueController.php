@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Issue;
 use Validator;
+use Illuminate\Support\Facades\Input;
+use Auth;
 
 class IssueController extends Controller
 {
@@ -12,42 +14,49 @@ class IssueController extends Controller
     {
         $input = $request->all();
 
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'title' => 'required|max:100',
             'description' => 'required',
-            'pollution_id' => 'required|numeric',
+            'pollution' => 'required|numeric',
             'latitude' => 'required|between:-90,90',
             'longitude' => 'required|between:-180,180',
-            'upload_file' => 'file|mimetypes:pdf',
         ]);
-        if ($validator->fails()) {
-            return redirect('issue/create')
-                        ->withErrors($validator)
-                        ->withInput();
-        }
+        
         $issue = new Issue;
+        $issue->user_id = Auth::user()->id;
         $issue->title = $input['title'];
         $issue->description = $input['description'];
         // $issue->user_id = Auth::id();
-        $issue->pollution_id = $input['pollution_id'];
+        $issue->pollution_id = $input['pollution'];
         $issue->latitude = $input['latitude'];
         $issue->longitude = $input['longitude'];
-        if ($request->file('upload_file')->isValid()) {
-            $uniqueFileName = uniqid() . $request->get('upload_file')->getClientOriginalName() . '.' . $request->get('upload_file')->getClientOriginalExtension();
+        $issue->sentiment = 5;
+        $issue->status = 1;
+        $file = Input::file('upload_file');
+        if ($file != null) {
+            $file_name = uniqid().$file->getClientOriginalName();
+            $file_size = round($file->getSize() / 1024);
+            $file_ex = $file->getClientOriginalExtension();
+            $file_mime = $file->getMimeType();
 
-            $request->get('upload_file')->move(public_path('files') . $uniqueFileName);
+            if (!in_array($file_ex, array('pdf'))) {
+                return back()->withErrors('Invalid filetype. Please upload only pdfs.');
+            }
+
+            $newname = $file_name;
+            $issue->document = $newname;
+            $file->move('uploads', $newname);
         }
-        dd($uniqueFileName);
-        $issue->document = $uniqueFileName;
         $issue->save();
+        return back();
 
         // return back()->with(['msg' =>'issue added successfully.', 'class' => 'alert-success']);
     }
 
     public function index()
     {
-        $issues = issue::all();
-        return view('society.home', ['issues'=>$issues]);
+        $issues = Issue::all();
+        return view('home', ['issues'=>$issues]);
     }
 
     public function edit($id)

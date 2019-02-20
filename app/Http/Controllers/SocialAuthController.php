@@ -24,7 +24,7 @@ class SocialAuthController extends Controller
             return redirect('register')->with(['u' => $u]);
         }
 
-        Auth::loginUsingId($user->id);
+        Auth::loginUsingId($u_id->id);
         return view('home');
     }
 }
