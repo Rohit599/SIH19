@@ -34,7 +34,7 @@
             <ul class="navbar-nav nav-flex-icons">
                 @if (!Auth::check())
                     <li class="nav-item">
-                        <a class="nav-link btn btn-info btn-rounded btn-md waves-effect waves-light" data-toggle="modal" data-target="#basicExampleModal">Login/Register</a>
+                        <a class="nav-link btn btn-info btn-rounded btn-md waves-effect waves-light" data-toggle="modal" data-target="#basicExampleModal" id="login_modal">Login/Register</a>
                     </li>
                 @else
                     <li class="nav-item dropdown">
