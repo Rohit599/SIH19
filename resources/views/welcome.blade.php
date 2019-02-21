@@ -125,8 +125,6 @@
                         <i class="fas fa-sign-in ml-1"></i>
                       </button>
                     </div>
-
-                  </div>
                   <!--Footer-->
                   <div class="modal-footer">
                     <div class="options text-right">
@@ -150,273 +148,216 @@
 <div class="container-fluid wow fadeIn" data-wow-delay="0.3s">
 	<div class="row">
 		<div class="col-md-9 mb-9 text-center">
-			<div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
+			<section>
+				<div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
+					<div class="text-center">
+						<h2 class="h1-responsive font-weight-bold my-5">Issues</h2>
+					</div>
 
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-multi" data-slide-to="1"></li>
+						<li data-target="#carousel-example-multi" data-slide-to="2"></li>
+						<li data-target="#carousel-example-multi" data-slide-to="3"></li>
+						<li data-target="#carousel-example-multi" data-slide-to="4"></li>
+						<li data-target="#carousel-example-multi" data-slide-to="5"></li>
+					</ol>
+					<!--/.Indicators-->
+
+					<div class="carousel-inner" role="listbox">
+						<div class="carousel-item active">
+							<div class="col-md-4">
+							<!-- Card -->
+								<div class="card">
+							  <!-- Card image -->
+								  	<div class="view overlay">
+								    	<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
+								    	<a>
+								      	<div class="mask rgba-white-slight"></div>
+								    	</a>
+								  	</div>
+
+							  <!-- Button -->
+							  		<a class="btn-floating btn-action ml-auto mr-4" style="background-color: #40bff5"><i class="fas fa-chevron-right pl-1"></i></a>
+
+							  <!-- Card content -->
+							  		<div class="card-body">
+
+							    <!-- Title -->
+							   			<h4 class="card-title">{{$issues[0]['title']}}</h4>
+							    		<hr>
+							    <!-- Text -->
+							    		<p class="card-text">{{$issues[0]['description']}}</p>
+
+							  		</div>
+
+							  <!-- Card footer -->
+							  		<div class="rounded-bottom text-center pt-3" style="background-color: #40bff5">
+							    		<ul class="list-unstyled list-inline font-small">
+							      			<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>{{date('d/m/y',strtotime($issues[0]['updated_at']))}}</li>
+							      			<li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
+							      			<li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="fab fa-facebook-f pr-1"> </i>21</a></li>
+							      			<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"> </i>5</a></li>
+							    		</ul>
+							  		</div>
+
+								</div>
+							<!-- Card -->
+							</div>
+						</div>
+						@for($i = 1; $i < sizeof($issues); $i++)
+							<div class="carousel-item">
+								<div class="col-md-4">
+							<!-- Card -->
+									<div class="card">
+
+							  <!-- Card image -->
+							  			<div class="view overlay">
+							    			<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Issue Image">
+							    			<a>
+							      				<div class="mask rgba-white-slight"></div>
+							    			</a>
+							  			</div>
+
+							  <!-- Button -->
+							  			<a class="btn-floating btn-action ml-auto mr-4"><i class="fas fa-chevron-right pl-1" style="background-color: #40bff5"></i></a>
+
+							  <!-- Card content -->
+							  			<div class="card-body">
+
+							    <!-- Title -->
+							    			<h4 class="card-title">{{$issues[$i]['title']}}</h4>
+							    			<hr>
+							    <!-- Text -->
+							    			<p class="card-text">{{$issues[$i]['description']}}</p>
+
+							  			</div>
+
+							  <!-- Card footer -->
+							  			<div class="rounded-bottom text-center pt-3" style="background-color: #40bff5">
+							    			<ul class="list-unstyled list-inline font-small">
+							      				<li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>{{date('d/m/y',strtotime($issues[$i]['updated_at']))}}</li>
+							      				<li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
+							      				<li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="fab fa-facebook-f pr-1"> </i>21</a></li>
+							      				<li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"> </i>5</a></li>
+							    			</ul>
+							  			</div>
+
+									</div>
+							<!-- Card -->
+								</div>
+							</div>
+						@endfor
+					</div>
+				</div>
 				<div class="text-center">
-					<h2 class="font-weight-bold mt-4">Issues <a id="homepage-cta-news" alt="See all News" class="btn btn-info btn-rounded btn-sm waves-effect waves-light" href="https://mdbootstrap.com/publications/front-end/bootstrap-news/" role="button">See all Issues</a> </h2>
+					<h2 class="h1-responsive font-weight-bold my-5"><a id="homepage-cta-news" alt="See all News" class="btn btn-info btn-sm waves-effect waves-light" href="https://mdbootstrap.com/publications/front-end/bootstrap-news/" role="button">See all Issues</a> </h2>
 				</div>
+			</section>
+			<hr class="my-5">
+			<!-- Section: Blog v.2 -->
+			<section class="text-center my-5">
 
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#carousel-example-multi" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-example-multi" data-slide-to="1"></li>
-					<li data-target="#carousel-example-multi" data-slide-to="2"></li>
-					<li data-target="#carousel-example-multi" data-slide-to="3"></li>
-					<li data-target="#carousel-example-multi" data-slide-to="4"></li>
-					<li data-target="#carousel-example-multi" data-slide-to="5"></li>
-				</ol>
-				<!--/.Indicators-->
+			  <!-- Section heading -->
+			  <h2 class="h1-responsive font-weight-bold my-5">Recent posts</h2>
+			  <!-- Section description -->
+			  <p class="dark-grey-text w-responsive mx-auto mb-5">Duis aute irure dolor in reprehenderit in voluptate velit
+			    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+			    qui officia deserunt mollit anim id est laborum.</p>
 
-				<div class="carousel-inner" role="listbox">
+			  <!-- Grid row -->
+			  <div class="row">
 
-					<div class="carousel-item active">
-						<div class="col-md-4">
-							<!-- Card -->
-							<div class="card">
+			    <!-- Grid column -->
+			    <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
 
-							  <!-- Card image -->
-							  <div class="view overlay">
-							    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
-							    <a>
-							      <div class="mask rgba-white-slight"></div>
-							    </a>
-							  </div>
+			      <!-- Featured image -->
+			      <div class="view overlay rounded z-depth-2 mb-4">
+			        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/81.jpg" alt="Sample image">
+			        <a>
+			          <div class="mask rgba-white-slight"></div>
+			        </a>
+			      </div>
 
-							  <!-- Button -->
-							  <a class="btn-floating btn-action ml-auto mr-4" style="background-color: #40bff5"><i class="fas fa-chevron-right pl-1"></i></a>
+			      <!-- Category -->
+			      <a href="#!" class="pink-text">
+			        <h6 class="font-weight-bold mb-3"><i class="fas fa-map pr-2"></i>Adventure</h6>
+			      </a>
+			      <!-- Post title -->
+			      <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
+			      <!-- Post data -->
+			      <p>by <a class="font-weight-bold">Billy Forester</a>, 15/07/2018</p>
+			      <!-- Excerpt -->
+			      <p class="dark-grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
+			        quo minus id quod maxime placeat facere possimus voluptas.</p>
+			      <!-- Read more button -->
+			      <a class="btn btn-pink btn-rounded btn-md">Read more</a>
 
-							  <!-- Card content -->
-							  <div class="card-body">
+			    </div>
+			    <!-- Grid column -->
 
-							    <!-- Title -->
-							    <h4 class="card-title">Card title</h4>
-							    <hr>
-							    <!-- Text -->
-							    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    <!-- Grid column -->
+			    <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
 
-							  </div>
+			      <!-- Featured image -->
+			      <div class="view overlay rounded z-depth-2 mb-4">
+			        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Sample image">
+			        <a>
+			          <div class="mask rgba-white-slight"></div>
+			        </a>
+			      </div>
 
-							  <!-- Card footer -->
-							  <div class="rounded-bottom text-center pt-3" style="background-color: #40bff5">
-							    <ul class="list-unstyled list-inline font-small">
-							      <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="fab fa-facebook-f pr-1"> </i>21</a></li>
-							      <li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"> </i>5</a></li>
-							    </ul>
-							  </div>
+			      <!-- Category -->
+			      <a href="#!" class="deep-orange-text">
+			        <h6 class="font-weight-bold mb-3"><i class="fas fa-graduation-cap pr-2"></i>Education</h6>
+			      </a>
+			      <!-- Post title -->
+			      <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
+			      <!-- Post data -->
+			      <p>by <a class="font-weight-bold">Billy Forester</a>, 13/07/2018</p>
+			      <!-- Excerpt -->
+			      <p class="dark-grey-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+			        voluptatum deleniti atque corrupti quos dolores.</p>
+			      <!-- Read more button -->
+			      <a class="btn btn-deep-orange btn-rounded btn-md">Read more</a>
 
-							</div>
-							<!-- Card -->
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-4">
-							<!-- Card -->
-							<div class="card">
+			    </div>
+			    <!-- Grid column -->
 
-							  <!-- Card image -->
-							  <div class="view overlay">
-							    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
-							    <a>
-							      <div class="mask rgba-white-slight"></div>
-							    </a>
-							  </div>
+			    <!-- Grid column -->
+			    <div class="col-lg-4 col-md-6 mb-0">
 
-							  <!-- Button -->
-							  <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i class="fas fa-chevron-right pl-1"></i></a>
+			      <!-- Featured image -->
+			      <div class="view overlay rounded z-depth-2 mb-4">
+			        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/13.jpg" alt="Sample image">
+			        <a>
+			          <div class="mask rgba-white-slight"></div>
+			        </a>
+			      </div>
 
-							  <!-- Card content -->
-							  <div class="card-body">
+			      <!-- Category -->
+			      <a href="#!" class="blue-text">
+			        <h6 class="font-weight-bold mb-3"><i class="fas fa-fire pr-2"></i>Culture</h6>
+			      </a>
+			      <!-- Post title -->
+			      <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
+			      <!-- Post data -->
+			      <p>by <a class="font-weight-bold">Billy Forester</a>, 11/07/2018</p>
+			      <!-- Excerpt -->
+			      <p class="dark-grey-text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
+			        quia consequuntur magni dolores eos qui ratione.</p>
+			      <!-- Read more button -->
+			      <a class="btn btn-info btn-rounded btn-md">Read more</a>
 
-							    <!-- Title -->
-							    <h4 class="card-title">Card title</h4>
-							    <hr>
-							    <!-- Text -->
-							    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			    </div>
+			    <!-- Grid column -->
 
-							  </div>
+			  </div>
+			  <!-- Grid row -->
 
-							  <!-- Card footer -->
-							  <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-							    <ul class="list-unstyled list-inline font-small">
-							      <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="fab fa-facebook-f pr-1"> </i>21</a></li>
-							      <li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"> </i>5</a></li>
-							    </ul>
-							  </div>
-
-							</div>
-							<!-- Card -->
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-4">
-							<!-- Card -->
-							<div class="card">
-
-							  <!-- Card image -->
-							  <div class="view overlay">
-							    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
-							    <a>
-							      <div class="mask rgba-white-slight"></div>
-							    </a>
-							  </div>
-
-							  <!-- Button -->
-							  <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i class="fas fa-chevron-right pl-1"></i></a>
-
-							  <!-- Card content -->
-							  <div class="card-body">
-
-							    <!-- Title -->
-							    <h4 class="card-title">Card title</h4>
-							    <hr>
-							    <!-- Text -->
-							    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-							  </div>
-
-							  <!-- Card footer -->
-							  <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-							    <ul class="list-unstyled list-inline font-small">
-							      <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="fab fa-facebook-f pr-1"> </i>21</a></li>
-							      <li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"> </i>5</a></li>
-							    </ul>
-							  </div>
-
-							</div>
-							<!-- Card -->
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-4">
-							<!-- Card -->
-							<div class="card">
-
-							  <!-- Card image -->
-							  <div class="view overlay">
-							    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
-							    <a>
-							      <div class="mask rgba-white-slight"></div>
-							    </a>
-							  </div>
-
-							  <!-- Button -->
-							  <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i class="fas fa-chevron-right pl-1"></i></a>
-
-							  <!-- Card content -->
-							  <div class="card-body">
-
-							    <!-- Title -->
-							    <h4 class="card-title">Card title</h4>
-							    <hr>
-							    <!-- Text -->
-							    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-							  </div>
-
-							  <!-- Card footer -->
-							  <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-							    <ul class="list-unstyled list-inline font-small">
-							      <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="fab fa-facebook-f pr-1"> </i>21</a></li>
-							      <li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"> </i>5</a></li>
-							    </ul>
-							  </div>
-
-							</div>
-							<!-- Card -->
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-4">
-							<!-- Card -->
-							<div class="card">
-
-							  <!-- Card image -->
-							  <div class="view overlay">
-							    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
-							    <a>
-							      <div class="mask rgba-white-slight"></div>
-							    </a>
-							  </div>
-
-							  <!-- Button -->
-							  <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i class="fas fa-chevron-right pl-1"></i></a>
-
-							  <!-- Card content -->
-							  <div class="card-body">
-
-							    <!-- Title -->
-							    <h4 class="card-title">Card title</h4>
-							    <hr>
-							    <!-- Text -->
-							    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-							  </div>
-
-							  <!-- Card footer -->
-							  <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-							    <ul class="list-unstyled list-inline font-small">
-							      <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="fab fa-facebook-f pr-1"> </i>21</a></li>
-							      <li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"> </i>5</a></li>
-							    </ul>
-							  </div>
-
-							</div>
-							<!-- Card -->
-						</div>
-					</div>
-					<div class="carousel-item">
-						<div class="col-md-4">
-							<!-- Card -->
-							<div class="card">
-
-							  <!-- Card image -->
-							  <div class="view overlay">
-							    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
-							    <a>
-							      <div class="mask rgba-white-slight"></div>
-							    </a>
-							  </div>
-
-							  <!-- Button -->
-							  <a class="btn-floating btn-action ml-auto mr-4 mdb-color lighten-3"><i class="fas fa-chevron-right pl-1"></i></a>
-
-							  <!-- Card content -->
-							  <div class="card-body">
-
-							    <!-- Title -->
-							    <h4 class="card-title">Card title</h4>
-							    <hr>
-							    <!-- Text -->
-							    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-							  </div>
-
-							  <!-- Card footer -->
-							  <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
-							    <ul class="list-unstyled list-inline font-small">
-							      <li class="list-inline-item pr-2 white-text"><i class="far fa-clock pr-1"></i>05/10/2015</li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="far fa-comments pr-1"></i>12</a></li>
-							      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i class="fab fa-facebook-f pr-1"> </i>21</a></li>
-							      <li class="list-inline-item"><a href="#" class="white-text"><i class="fab fa-twitter pr-1"> </i>5</a></li>
-							    </ul>
-							  </div>
-
-							</div>
-							<!-- Card -->
-						</div>
-					</div>
-				</div>
-			</div>
+			</section>
+			<!-- Section: Blog v.2 -->
 		</div>
 		<div class="col-md-3 mb-3">
 			<section class="section widget-content mt-5">

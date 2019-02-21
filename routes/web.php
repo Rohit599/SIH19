@@ -1,11 +1,13 @@
 <?php
 use App\Pollution;
+use App\Issue;
 
 Route::get('/', function () {
     $client = new GuzzleHttp\Client();
     $res = $client->request('GET', 'https://newsapi.org/v2/everything?q=environment&sortBy=publishedAt&apiKey=665f0a517e85463fb21017065595b4e5&sources=the-hindu', []);
     $arr = json_decode($res->getBody());
-    return view('welcome', ['news' => $arr->articles]);
+    $issues = Issue::all()->toArray();
+    return view('welcome', ['news' => $arr->articles, 'issues' => $issues]);
 })->name('login');
 
 // Route::get('/test', function () {
