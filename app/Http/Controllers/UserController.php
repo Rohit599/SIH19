@@ -31,7 +31,7 @@ class UserController extends Controller
     public function login(Request $request)
     {
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-                return 0;
+                return redirect(url('home'));
         } else {
             return back()->with(['msg' => 'The email/password is invalid', 'class' => 'alert-danger']);
         }
