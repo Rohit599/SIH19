@@ -1,5 +1,5 @@
 <!-- Footer -->
-<footer class="page-footer font-small stylish-color-dark pt-4">
+<footer class="page-footer font-small unique-color-dark mt-4 pt-4">
 
     <!-- Footer Links -->
     <div class="container text-center text-md-left">
@@ -157,7 +157,7 @@
 <!-- Footer -->
 
 <!-- JQuery -->
-<script type="text/javascript" src="{{ url('js/jquery-3.3.1.min.js') }}"></script>
+
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="{{ url('js/popper.min.js') }}"></script>
 <!-- Bootstrap core JavaScript -->
@@ -166,4 +166,5 @@
 <script type="text/javascript" src="{{ url('js/mdb.min.js') }}"></script>
 <!-- AddThis -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b80e414df5112b3"></script>
+<script type="text/javascript" src="{{ url('js/script.js') }}"></script>
 @yield('script')

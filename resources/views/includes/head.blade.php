@@ -14,6 +14,7 @@
 <!-- Material Design Bootstrap -->
 <link href="{{ url('css/mdb.min.css') }}" rel="stylesheet">
 <link href="{{ url('css/style.css') }}" rel="stylesheet">
+<script type="text/javascript" src="{{ url('js/jquery-3.3.1.min.js') }}"></script>
 <style> 
 /*body {
   background-color: #fff;
