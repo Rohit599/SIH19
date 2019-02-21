@@ -147,79 +147,8 @@
 @stop
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid wow fadeIn" data-wow-delay="0.3s">
 	<div class="row">
-		<div class="col-md-3 mb-3">
-			<!-- Material form login -->
-			<div class="card">
-
-			  <h5 class="card-header info-color white-text text-center py-4">
-			    <strong>Sign in</strong>
-			  </h5>
-
-			  <!--Card content-->
-			  <div class="card-body px-lg-5 pt-0">
-
-			    <!-- Form -->
-			    <form class="text-center" style="color: #757575;">
-
-			      <!-- Email -->
-			      <div class="md-form">
-			        <input type="email" id="materialLoginFormEmail" class="form-control">
-			        <label for="materialLoginFormEmail">E-mail</label>
-			      </div>
-
-			      <!-- Password -->
-			      <div class="md-form">
-			        <input type="password" id="materialLoginFormPassword" class="form-control">
-			        <label for="materialLoginFormPassword">Password</label>
-			      </div>
-
-			      <div class="d-flex justify-content-around">
-			        <div>
-			          <!-- Remember me -->
-			          <div class="form-check">
-			            <input type="checkbox" class="form-check-input" id="materialLoginFormRemember">
-			            <label class="form-check-label" for="materialLoginFormRemember">Remember me</label>
-			          </div>
-			        </div>
-			        <div>
-			          <!-- Forgot password -->
-			          <a href="">Forgot password?</a>
-			        </div>
-			      </div>
-
-			      <!-- Sign in button -->
-			      <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
-
-			      <!-- Register -->
-			      <p>Not a member?
-			        <a href="">Register</a>
-			      </p>
-
-			      <!-- Social login -->
-			      <p>or sign in with:</p>
-			      <a type="button" class="btn-floating btn-fb btn-sm">
-			        <i class="fab fa-facebook-f"></i>
-			      </a>
-			      <a type="button" class="btn-floating btn-tw btn-sm">
-			        <i class="fab fa-twitter"></i>
-			      </a>
-			      <a type="button" class="btn-floating btn-li btn-sm">
-			        <i class="fab fa-linkedin-in"></i>
-			      </a>
-			      <a type="button" class="btn-floating btn-git btn-sm">
-			        <i class="fab fa-github"></i>
-			      </a>
-
-			    </form>
-			    <!-- Form -->
-
-			  </div>
-
-			</div>
-			<!-- Material form login -->
-		</div>	
 		<div class="col-md-9 mb-9 text-center">
 			<div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
 
@@ -489,6 +418,230 @@
 				</div>
 			</div>
 		</div>
+		<div class="col-md-3 mb-3">
+			<section class="section widget-content mt-5">
+
+			            <!-- Heading -->
+			            <h5 class="dark-grey-text font-weight-bold">
+			              <strong>FEATURED POSTS</strong>
+			            </h5>
+			            <hr>
+
+			            <!--/ Heading -->
+			            <div class="card card-body pb-0">
+			              <div class="single-post">
+
+			                <!-- Grid row -->
+			                <div class="row">
+			                  <div class="col-4">
+
+			                    <!-- Image -->
+			                    <div class="view overlay rgba-white-slight">
+			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(121).jpg" class="img-fluid rounded-0" alt="sample image">
+			                      <a>
+			                        <div class="mask waves-light waves-effect waves-light"></div>
+			                      </a>
+			                    </div>
+			                  </div>
+
+			                  <!-- Excerpt -->
+			                  <div class="col-8">
+			                    <div class="post-data">
+			                      <p class="font-small mb-0">
+			                        <i class="far fa-clock-o"></i> 25/08/2016</p>
+			                      <a>
+			                        <i class="far fa-comments"></i> 114</a>
+			                    </div>
+
+			                    <h6>
+			                      <a>
+			                        <strong>Title of the news</strong>
+			                      </a>
+			                    </h6>
+
+			                  </div>
+			                  <!--/ Excerpt -->
+			                </div>
+			                <!--/ Grid row -->
+			              </div>
+
+			              <div class="single-post">
+			                <!--  Grid row -->
+			                <div class="row">
+			                  <!-- Image -->
+			                  <div class="col-4">
+			                    <div class="view overlay rgba-white-slight">
+			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(30).jpg" class="img-fluid rounded-0" alt="sample image">
+			                      <a>
+			                        <div class="mask waves-light waves-effect waves-light"></div>
+			                      </a>
+			                    </div>
+			                  </div>
+			                  <!--/ Image -->
+
+			                  <!-- Excerpt -->
+			                  <div class="col-8">
+			                    <div class="post-data">
+			                      <p class="font-small mb-0">
+			                        <i class="far fa-clock-o"></i> 21/08/2016</p>
+			                      <a>
+			                        <i class="far fa-comments"></i> 96</a>
+			                    </div>
+
+			                    <h6>
+			                      <a>
+			                        <strong>This is title of the news</strong>
+			                      </a>
+			                    </h6>
+
+			                  </div>
+			                  <!--/ Excerpt -->
+			                </div>
+			                <!--/ Grid row -->
+			              </div>
+
+			              <div class="single-post">
+			                <!-- Grid row -->
+			                <div class="row">
+			                  <!-- Image -->
+			                  <div class="col-4">
+			                    <div class="view overlay rgba-white-slight">
+			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(118).jpg" class="img-fluid rounded-0" alt="sample image">
+			                      <a>
+			                        <div class="mask waves-light waves-effect waves-light"></div>
+			                      </a>
+			                    </div>
+			                  </div>
+			                  <!--/ Image -->
+
+			                  <!-- Excerpt -->
+			                  <div class="col-8">
+			                    <div class="post-data">
+			                      <p class="font-small mb-0">
+			                        <i class="far fa-clock-o"></i> 19/07/2016</p>
+			                      <a>
+			                        <i class="far fa-comments"></i> 105</a>
+			                    </div>
+
+			                    <h6>
+			                      <a>
+			                        <strong>This is title of the news</strong>
+			                      </a>
+			                    </h6>
+
+			                  </div>
+			                  <!--/ Excerpt -->
+			                </div>
+			                <!--/ Grid row -->
+			              </div>
+
+			              <div class="single-post">
+			                <!-- Grid row -->
+			                <div class="row">
+			                  <!-- Image -->
+			                  <div class="col-4">
+			                    <div class="view overlay rgba-white-slight">
+			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(124).jpg" class="img-fluid rounded-0" alt="sample image">
+			                      <a>
+			                        <div class="mask waves-light waves-effect waves-light"></div>
+			                      </a>
+			                    </div>
+			                  </div>
+			                  <!--/ Image -->
+
+			                  <!-- Excerpt -->
+			                  <div class="col-8">
+			                    <div class="post-data">
+			                      <p class="font-small mb-0">
+			                        <i class="far fa-clock-o"></i> 26/06/2016</p>
+			                      <a>
+			                        <i class="far fa-comments"></i> 82</a>
+			                    </div>
+
+			                    <h6>
+			                      <a>
+			                        <strong>This is title of the news</strong>
+			                      </a>
+			                    </h6>
+
+			                  </div>
+			                  <!--/ Excerpt -->
+			                </div>
+			                <!--/ Grid row -->
+			              </div>
+
+			              <div class="single-post">
+			                <!-- Grid row -->
+			                <div class="row">
+			                  <!-- Image -->
+			                  <div class="col-4">
+			                    <div class="view overlay rgba-white-slight">
+			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(85).jpg" class="img-fluid rounded-0" alt="sample image">
+			                      <a>
+			                        <div class="mask waves-light waves-effect waves-light"></div>
+			                      </a>
+			                    </div>
+			                  </div>
+			                  <!--/ Image -->
+
+			                  <!-- Excerpt -->
+			                  <div class="col-8">
+			                    <div class="post-data">
+			                      <p class="font-small mb-0">
+			                        <i class="far fa-clock-o"></i> 26/06/2016</p>
+			                      <a>
+			                        <i class="far fa-comments"></i> 82</a>
+			                    </div>
+
+			                    <h6>
+			                      <a>
+			                        <strong>This is title of the news</strong>
+			                      </a>
+			                    </h6>
+
+			                  </div>
+			                  <!--/ Excerpt -->
+			                </div>
+			                <!--/ Grid row -->
+			              </div>
+
+			              <div class="single-post">
+			                <!-- Grid row -->
+			                <div class="row">
+			                  <!-- Image -->
+			                  <div class="col-4">
+			                    <div class="view overlay rgba-white-slight">
+			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(119).jpg" class="img-fluid rounded-0" alt="sample image">
+			                      <a>
+			                        <div class="mask waves-light waves-effect waves-light"></div>
+			                      </a>
+			                    </div>
+			                  </div>
+			                  <!--/ Image -->
+
+			                  <!-- Excerpt -->
+			                  <div class="col-8">
+			                    <div class="post-data">
+			                      <p class="font-small mb-0">
+			                        <i class="far fa-clock-o"></i> 26/06/2016</p>
+			                      <a>
+			                        <i class="far fa-comments"></i> 82</a>
+			                    </div>
+
+			                    <h6>
+			                      <a>
+			                        <strong>This is title of the news</strong>
+			                      </a>
+			                    </h6>
+
+			                  </div>
+			                  <!--/Excerpt -->
+			                </div>
+			                <!--/Grid row -->
+			              </div>
+			            </div>
+			          </section>
+		</div>	
 	</div>
 </div>
 
@@ -499,4 +652,5 @@
 });
 </script>
 @endif
+
 @stop
