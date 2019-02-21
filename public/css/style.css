@@ -17,6 +17,7 @@ body{
 }
 
 .widget-content .single-post {
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid #e0e0e0;
     margin-bottom: 1.5rem;
 }

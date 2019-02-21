@@ -427,18 +427,18 @@
 			            </h5>
 			            <hr>
 
-			            <!--/ Heading -->
 			            <div class="card card-body pb-0">
+			            @foreach ($news as $n)
+
 			              <div class="single-post">
 
 			                <!-- Grid row -->
 			                <div class="row">
 			                  <div class="col-4">
-
 			                    <!-- Image -->
 			                    <div class="view overlay rgba-white-slight">
-			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(121).jpg" class="img-fluid rounded-0" alt="sample image">
-			                      <a>
+			                      <img src="{{ $n->urlToImage }}" class="img-fluid rounded-0" alt="sample image" width="94px">
+			                      <a href="{{ $n->url }}" target="_blank">
 			                        <div class="mask waves-light waves-effect waves-light"></div>
 			                      </a>
 			                    </div>
@@ -446,18 +446,17 @@
 
 			                  <!-- Excerpt -->
 			                  <div class="col-8">
-			                    <div class="post-data">
-			                      <p class="font-small mb-0">
-			                        <i class="far fa-clock-o"></i> 25/08/2016</p>
-			                      <a>
-			                        <i class="far fa-comments"></i> 114</a>
-			                    </div>
-
 			                    <h6>
-			                      <a>
-			                        <strong>Title of the news</strong>
+			                      <a href="{{ $n->url }}" target="_blank" class="black-text">
+			                        <strong>{{ $n->title }}</strong>
 			                      </a>
 			                    </h6>
+
+			                    <div class="post-data">
+			                      <p class="font-small mb-0">
+			                        <i class="far fa-clock-o"></i> {{ $n->publishedAt }}
+			                      </p>
+			                    </div>
 
 			                  </div>
 			                  <!--/ Excerpt -->
@@ -465,181 +464,11 @@
 			                <!--/ Grid row -->
 			              </div>
 
-			              <div class="single-post">
-			                <!--  Grid row -->
-			                <div class="row">
-			                  <!-- Image -->
-			                  <div class="col-4">
-			                    <div class="view overlay rgba-white-slight">
-			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(30).jpg" class="img-fluid rounded-0" alt="sample image">
-			                      <a>
-			                        <div class="mask waves-light waves-effect waves-light"></div>
-			                      </a>
-			                    </div>
-			                  </div>
-			                  <!--/ Image -->
+			            @endforeach
 
-			                  <!-- Excerpt -->
-			                  <div class="col-8">
-			                    <div class="post-data">
-			                      <p class="font-small mb-0">
-			                        <i class="far fa-clock-o"></i> 21/08/2016</p>
-			                      <a>
-			                        <i class="far fa-comments"></i> 96</a>
-			                    </div>
-
-			                    <h6>
-			                      <a>
-			                        <strong>This is title of the news</strong>
-			                      </a>
-			                    </h6>
-
-			                  </div>
-			                  <!--/ Excerpt -->
-			                </div>
-			                <!--/ Grid row -->
-			              </div>
-
-			              <div class="single-post">
-			                <!-- Grid row -->
-			                <div class="row">
-			                  <!-- Image -->
-			                  <div class="col-4">
-			                    <div class="view overlay rgba-white-slight">
-			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(118).jpg" class="img-fluid rounded-0" alt="sample image">
-			                      <a>
-			                        <div class="mask waves-light waves-effect waves-light"></div>
-			                      </a>
-			                    </div>
-			                  </div>
-			                  <!--/ Image -->
-
-			                  <!-- Excerpt -->
-			                  <div class="col-8">
-			                    <div class="post-data">
-			                      <p class="font-small mb-0">
-			                        <i class="far fa-clock-o"></i> 19/07/2016</p>
-			                      <a>
-			                        <i class="far fa-comments"></i> 105</a>
-			                    </div>
-
-			                    <h6>
-			                      <a>
-			                        <strong>This is title of the news</strong>
-			                      </a>
-			                    </h6>
-
-			                  </div>
-			                  <!--/ Excerpt -->
-			                </div>
-			                <!--/ Grid row -->
-			              </div>
-
-			              <div class="single-post">
-			                <!-- Grid row -->
-			                <div class="row">
-			                  <!-- Image -->
-			                  <div class="col-4">
-			                    <div class="view overlay rgba-white-slight">
-			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(124).jpg" class="img-fluid rounded-0" alt="sample image">
-			                      <a>
-			                        <div class="mask waves-light waves-effect waves-light"></div>
-			                      </a>
-			                    </div>
-			                  </div>
-			                  <!--/ Image -->
-
-			                  <!-- Excerpt -->
-			                  <div class="col-8">
-			                    <div class="post-data">
-			                      <p class="font-small mb-0">
-			                        <i class="far fa-clock-o"></i> 26/06/2016</p>
-			                      <a>
-			                        <i class="far fa-comments"></i> 82</a>
-			                    </div>
-
-			                    <h6>
-			                      <a>
-			                        <strong>This is title of the news</strong>
-			                      </a>
-			                    </h6>
-
-			                  </div>
-			                  <!--/ Excerpt -->
-			                </div>
-			                <!--/ Grid row -->
-			              </div>
-
-			              <div class="single-post">
-			                <!-- Grid row -->
-			                <div class="row">
-			                  <!-- Image -->
-			                  <div class="col-4">
-			                    <div class="view overlay rgba-white-slight">
-			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(85).jpg" class="img-fluid rounded-0" alt="sample image">
-			                      <a>
-			                        <div class="mask waves-light waves-effect waves-light"></div>
-			                      </a>
-			                    </div>
-			                  </div>
-			                  <!--/ Image -->
-
-			                  <!-- Excerpt -->
-			                  <div class="col-8">
-			                    <div class="post-data">
-			                      <p class="font-small mb-0">
-			                        <i class="far fa-clock-o"></i> 26/06/2016</p>
-			                      <a>
-			                        <i class="far fa-comments"></i> 82</a>
-			                    </div>
-
-			                    <h6>
-			                      <a>
-			                        <strong>This is title of the news</strong>
-			                      </a>
-			                    </h6>
-
-			                  </div>
-			                  <!--/ Excerpt -->
-			                </div>
-			                <!--/ Grid row -->
-			              </div>
-
-			              <div class="single-post">
-			                <!-- Grid row -->
-			                <div class="row">
-			                  <!-- Image -->
-			                  <div class="col-4">
-			                    <div class="view overlay rgba-white-slight">
-			                      <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20(119).jpg" class="img-fluid rounded-0" alt="sample image">
-			                      <a>
-			                        <div class="mask waves-light waves-effect waves-light"></div>
-			                      </a>
-			                    </div>
-			                  </div>
-			                  <!--/ Image -->
-
-			                  <!-- Excerpt -->
-			                  <div class="col-8">
-			                    <div class="post-data">
-			                      <p class="font-small mb-0">
-			                        <i class="far fa-clock-o"></i> 26/06/2016</p>
-			                      <a>
-			                        <i class="far fa-comments"></i> 82</a>
-			                    </div>
-
-			                    <h6>
-			                      <a>
-			                        <strong>This is title of the news</strong>
-			                      </a>
-			                    </h6>
-
-			                  </div>
-			                  <!--/Excerpt -->
-			                </div>
-			                <!--/Grid row -->
-			              </div>
 			            </div>
+
+
 			          </section>
 		</div>	
 	</div>
