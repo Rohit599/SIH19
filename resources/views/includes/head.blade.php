@@ -8,12 +8,13 @@
 
 
 <!--  Font Awesome  -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
 <!-- Bootstrap core CSS -->
 <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
 <!-- Material Design Bootstrap -->
 <link href="{{ url('css/mdb.min.css') }}" rel="stylesheet">
 <link href="{{ url('css/style.css') }}" rel="stylesheet">
+<script type="text/javascript" src="{{ url('js/jquery-3.3.1.min.js') }}"></script>
 <style> 
 /*body {
   background-color: #fff;

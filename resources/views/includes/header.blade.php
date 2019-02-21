@@ -1,82 +1,58 @@
 <header>
-<!--Navbar-->
-<!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #03a9f4!important;">
-
-  <div class="container">
-
-    <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">CosmoGreen</a>
-
-    <!-- Collapse button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="basicExampleNav">
-
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-
-        <!-- Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-
-      </ul>
-      <!-- Links -->
-
-      <form class="form-inline">
-        <div class="md-form my-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar blue-gradient">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <strong>{{ config('app.name') }}</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7"
+          aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('/') }}">
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item {{ Request::is('sell') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('/sell') }}">
+                        Sell Now
+                    </a>
+                </li>
+                <li class="nav-item {{ Request::is('about') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('/about') }}">
+                        About Us
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://m.me/full2study" target="_blank">
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav nav-flex-icons">
+                @if (!Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-info btn-rounded btn-md waves-effect waves-light" data-toggle="modal" data-target="#basicExampleModal">Login/Register</a>
+                    </li>
+                @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user"></i> {{ Auth()->user()->name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink-4">
+                            <a class="dropdown-item" href="{{ url('user') }}">My Ads</a>
+                            <a class="dropdown-item" href="{{ url('user/profile') }}">Profile</a>
+                            <a class="dropdown-item" href="{{ url('logout') }}">Log out</a>
+                        </div>
+                    </li>
+                @endif
+            </ul>
         </div>
-      </form>
     </div>
-    <!-- Collapsible content -->
+  </nav>
 
-  </div>
+@yield('header')
 
-</nav>
-
-<div id="intro" class="view">
-
-  <div class="mask rgba-black-strong">
-
-    <div class="d-flex align-items-center h-100">
-
-        <!-- Heading -->
-        <h2 class="display-4 font-weight-bold white-text pt-5 mb-2">Travel</h2>
-
-        <!-- Divider -->
-        <hr class="hr-light">
-
-        <!-- Description -->
-        <h4 class="white-text my-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti consequuntur.</h4>
-        <button type="button" class="btn btn-outline-white">Read more<i class="fas fa-book ml-2"></i></button>
-
-    </div>
-
-</div>
-</div>
-<!--/.Navbar-->
-<!--/.Navbar-->
 </header>

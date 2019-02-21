@@ -5,6 +5,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('login');
 
+// Route::get('/test', function () {
+//     dd(sentimentScore("Air Pollution is deteriorating this environment. Polythen should be banned. I was surprised and happy. "));
+// });
+
 Route::get('/redirect/{service}', 'SocialAuthController@redirect');
 Route::get('/callback/{service}', 'SocialAuthController@callback');
 
