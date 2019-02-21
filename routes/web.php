@@ -2,7 +2,10 @@
 use App\Pollution;
 
 Route::get('/', function () {
-    return view('welcome');
+    $client = new GuzzleHttp\Client();
+    $res = $client->request('GET', 'https://newsapi.org/v2/everything?q=environment&sortBy=publishedAt&apiKey=665f0a517e85463fb21017065595b4e5&sources=the-hindu', []);
+    $arr = json_decode($res->getBody());
+    return view('welcome', ['news' => $arr->articles]);
 })->name('login');
 
 // Route::get('/test', function () {
