@@ -25,6 +25,6 @@ class SocialAuthController extends Controller
         }
 
         Auth::loginUsingId($u_id->id);
-        return view('home');
+        return redirect('/');
     }
 }
