@@ -23,14 +23,6 @@ class Issue extends Model
     }
 
     /**
-     * Get the images of an issue.
-     */
-    public function images()
-    {
-        return $this->hasMany('App\Image');
-    }
-
-    /**
      * Get the sources of an issue.
      */
     public function sources()

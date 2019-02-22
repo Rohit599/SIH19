@@ -151,7 +151,11 @@
 			<section>
 				<div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2" data-ride="carousel">
 					<div class="text-center">
-						<h2 class="h1-responsive font-weight-bold my-5">Issues</h2>
+						<h2 class="h1-responsive font-weight-bold my-5">Issues
+						<a href="{{ url('issue/create') }}" type="button" class="btn blue-gradient btn-rounded">
+							<i class="fa fa-plus"></i>
+							Add Issue
+						</a></h2>
 					</div>
 
 					<!-- Indicators -->
