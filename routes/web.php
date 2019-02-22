@@ -43,4 +43,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('issues/{issue}/edit', 'IssueController@edit');
     Route::put('issues/{issue}/update', 'IssueController@update');
     Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('issue.destroy');
+
+    Route::get('blog/create', function () {
+        $pollutions = Pollution::all()->sortBy('name');
+        return view('user.add-blog')->with(compact('pollutions'));
+    })->name('userCreateIssue');
+    Route::post('blog', 'BlogController@store')->name('blog.store');
+    Route::get('blogs', 'BlogController@index');
+    Route::get('blogs/{blog}/edit', 'BlogController@edit');
+    Route::put('blogs/{blog}/update', 'BlogController@update');
+    Route::delete('blogs/{blog}/delete', 'BlogController@delete')->name('blog.destroy');
 });
