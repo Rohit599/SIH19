@@ -39,7 +39,8 @@
                 @else
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user"></i> {{ Auth()->user()->name }}
+                            <img src="{{ Avatar::create(Auth()->user()->name)->toBase64() }}" height="30px"/>
+ {{ Auth()->user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink-4">
                             <a class="dropdown-item" href="{{ url('user') }}">My Ads</a>

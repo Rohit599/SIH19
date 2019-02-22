@@ -7,6 +7,5 @@
 		@yield('content')
 	</main>
 	@include('includes.footer')
-	</div>
 </body>
 </html>

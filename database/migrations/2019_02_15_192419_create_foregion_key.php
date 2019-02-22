@@ -17,12 +17,13 @@ class CreateForegionKey extends Migration
             $table->foreign('pollution_id')->references('id')->on('pollutions')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
-        Schema::table('images', function (Blueprint $table) {
-            $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
-        });
         Schema::table('issue_source', function (Blueprint $table) {
             $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
             $table->foreign('source_id')->references('id')->on('sources')->onDelete('cascade');
+        });
+        Schema::table('issue_tag', function (Blueprint $table) {
+            $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
         Schema::table('blogs', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -58,15 +59,17 @@ class CreateForegionKey extends Migration
             $table->dropForeign('issues_user_id_foreign');
             $table->dropIndex('issues_user_id_foreign');
         });
-        Schema::table('images', function (Blueprint $table) {
-            $table->dropForeign('images_issue_id_foreign');
-            $table->dropIndex('images_issue_id_foreign');
-        });
         Schema::table('issue_source', function (Blueprint $table) {
-            $table->dropForeign('images_issue_id_foreign');
-            $table->dropIndex('images_issue_id_foreign');
-            $table->dropForeign('images_source_id_foreign');
-            $table->dropIndex('images_source_id_foreign');
+            $table->dropForeign('issue_issue_id_foreign');
+            $table->dropIndex('issue_issue_id_foreign');
+            $table->dropForeign('issue_source_id_foreign');
+            $table->dropIndex('issue_source_id_foreign');
+        });
+        Schema::table('issue_tag', function (Blueprint $table) {
+            $table->dropForeign('issue_tag_issue_id_foreign');
+            $table->dropIndex('issue_tag_issue_id_foreign');
+            $table->dropForeign('issue_tag_tag_id_foreign');
+            $table->dropIndex('issue_tag_tag_id_foreign');
         });
         Schema::table('blogs', function (Blueprint $table) {
             $table->dropForeign('blogs_user_id_foreign');

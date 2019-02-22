@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('issue_id');
             $table->integer('sentiment');
+            $table->boolean('is_spam');
             $table->timestamps();
         });
     }

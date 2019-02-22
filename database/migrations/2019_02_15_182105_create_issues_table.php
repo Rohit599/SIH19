@@ -22,6 +22,7 @@ class CreateIssuesTable extends Migration
             $table->decimal('latitude');
             $table->decimal('longitude');
             $table->string('document')->nullable();
+            $table->string('image');
             $table->integer('sentiment');
             $table->boolean('status');
             $table->timestamps();
