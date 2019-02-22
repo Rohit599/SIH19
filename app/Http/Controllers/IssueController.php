@@ -61,7 +61,7 @@ class IssueController extends Controller
 
     public function edit($id)
     {
-        $issue =issue::find($id);
+        $issue =Issue::find($id);
         if (!is_null($issue)) {
             return view('society.edit-issue', ['issue' => $issue]);
         }
@@ -69,7 +69,7 @@ class IssueController extends Controller
 
     public function update(Request $request, $id)
     {
-        $issue =issue::find($id);
+        $issue =Issue::find($id);
         $issue->name = $request->title;
         $issue->description = $request->description;
         $issue->society_id = Auth::id();
@@ -90,7 +90,7 @@ class IssueController extends Controller
 
     public function delete($id)
     {
-        $issue =issue::find($id);
+        $issue =Issue::find($id);
         if (!is_null($issue)) {
             $issue->delete();
             return back()->with(['msg' =>'issue deleted successfully.', 'class' => 'alert-success']);
