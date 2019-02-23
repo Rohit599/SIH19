@@ -36,7 +36,7 @@ class BlogController extends Controller
             }
             $newname = $file_name;
             $blog->cover_image = $newname;
-            $file->move('uploads', $newname);
+            $file->move('uploads/images', $newname);
         }
         $blog->save();
         return back()->with(['msg' =>'Blog added successfully. It will be posted as soon as the admin approves it.', 'class' => 'alert-success']);
