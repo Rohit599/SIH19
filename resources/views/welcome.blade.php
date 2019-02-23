@@ -371,6 +371,72 @@ aria-hidden="true">
 
 							</section>
 							<!-- Section: Blog v.2 -->
+							<hr class="my-5">
+							<!-- Section: Blog v.2 -->
+							<section class="text-center my-5">
+              
+@if(Agent::isMobile())
+<div name="airvisual_widget" key="nfrMuFE8EYtjYojZT"></div>
+@else
+<br>
+<div name="airvisual_widget" key="Xr2XrimkdPXynKwkF"></div>
+<br>
+@endif
+<br>
+<script type="text/javascript" src="https://www.airvisual.com/scripts/widget_v2.0.js"></script>
+<div class="card card-body pb-0">
+<table class="table table-sm table-bordered">
+  <thead bgcolor="#f0f0f0">
+    <tr class="text-center">
+      <td><strong>Air Quality Index</strong></td>
+      <td><strong>Levels of Health Concern</strong></td>
+      <td><strong>Health Implications	</strong></td>
+      <td><strong>Recommended Precautions
+</strong></td>
+  </tr>
+</thead>
+  <tbody>
+    <tr>
+      <td>0 to 50</td>
+      <td bgcolor="#26e400">Good</td>
+      <td>No health implications.	</td>
+      <td>Everyone can continue their outdoor activities normally.</td>
+    </tr>
+    <tr>
+      <td>51 to 100</td>
+      <td bgcolor="#fffd02">Moderate</td>
+      <td>Some pollutants may slightly affect very few hypersensitive individuals.	</td>
+      <td>Only very few hypersensitive people should reduce outdoor activities.</td>
+    </tr>
+    <tr>
+      <td>101 to 150</td>
+      <td bgcolor="#fe7e01" class="text-white">Unhealthy for Sensitive Groups</td>
+      <td>Healthy people may experience slight irritations and sensitive individuals will be slightly affected to a larger extent.	</td>
+      <td>Children, seniors and individuals with respiratory or heart diseases should reduce sustained and high-intensity outdoor exercises.</td>
+    </tr>
+    <tr>
+      <td>151 to 200</td>
+      <td bgcolor="#fd1600" class="text-white">Unhealthy</td>
+      <td>Sensitive individuals will experience more serious conditions. The hearts and respiratory systems of healthy people may be affected.	</td>
+      <td>Children, seniors and individuals with respiratory or heart diseases should avoid sustained and high-intensity outdoor exercises. General population should moderately reduce outdoor activities.</td>
+    </tr>
+    <tr>
+      <td>0201 to 300</td>
+      <td bgcolor="#8f3f97" class="text-white">Very Unhealthy</td>
+      <td>Healthy people will commonly show symptoms. People with respiratory or heart diseases will be significantly affected and will experience reduced endurance in activities.	</td>
+      <td>Children, seniors and individuals with heart or lung diseases should stay indoors and avoid outdoor activities. General population should reduce outdoor activities.</td>
+    </tr>
+    <tr>
+      <td>301 to 500</td>
+      <td bgcolor="#7e0723" class="text-white">Hazardous</td>
+      <td>Healthy people will experience reduced endurance in activities and may also show noticeably strong symptoms. Other illnesses may be triggered in healthy people. Elders and the sick should remain indoors and avoid exercise. Healthy individuals should avoid outdoor activities.	</td>
+      <td>Children, seniors and the sick should stay indoors and avoid physical exertion. General population should avoid outdoor activities.</td>
+    </tr>
+</tbody>
+</table>
+</div>
+							</section>
+              
 						</div>
 						<div class="col-md-3 mb-3">
 							<section class="section widget-content mt-5">

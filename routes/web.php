@@ -1,6 +1,8 @@
 <?php
 use App\Pollution;
+use App\Blog;
 use App\Issue;
+use App\User;
 
 Route::get('/', function () {
     $client = new GuzzleHttp\Client();
@@ -61,4 +63,33 @@ Route::group(['middleware' => ['auth']], function () {
     // Route::get('blogs/{blog}/edit', 'BlogController@edit');
     // Route::put('blogs/{blog}/update', 'BlogController@update');
     // Route::delete('blogs/{blog}/delete', 'BlogController@delete')->name('blog.destroy');
+});
+
+Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function () {
+    Route::get('/', function () {
+        $user = User::count();
+        $air_issue = Issue::where('pollution_id', '1')->count();
+        $noice_issue = Issue::where('pollution_id', '2')->count();
+        $soil_issue = Issue::where('pollution_id', '3')->count();
+        $water_issue = Issue::where('pollution_id', '4')->count();
+        $issue_date = Issue::select(DB::raw('DATE(created_at) as date'), DB::raw('count(id) as total'))
+                        ->whereBetween('created_at', [date("Y-m-d", strtotime('-6 days'))." 00:00:00", date("Y-m-d")." 23:59:59"])
+                        ->orderBy('date')->groupBy('date')->get()->toArray();
+        $issue_date = array_column($issue_date, 'total', 'date');
+        for ($i=6; $i >= 0; $i--) {
+            if (!array_key_exists(date("Y-m-d", strtotime('-'.$i.' days')), $issue_date)) {
+                $issue_date[date("Y-m-d", strtotime('-'.$i.' days'))] = 0;
+            }
+        }
+        $blog = Blog::count();
+        return view('admin.home', [
+            'user' => $user,
+            'blog' => $blog,
+            'air_issue' => $air_issue,
+            'noice_issue' => $noice_issue,
+            'soil_issue' => $soil_issue,
+            'water_issue' => $water_issue,
+            'issue_date' => $issue_date
+        ]);
+    });
 });
