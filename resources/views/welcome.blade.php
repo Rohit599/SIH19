@@ -363,10 +363,15 @@
 			</section>
 			<!-- Section: Blog v.2 -->
 
+@if(Agent::isMobile())
+<div name="airvisual_widget" key="nfrMuFE8EYtjYojZT"></div>
+@else
+<br>
 <div name="airvisual_widget" key="Xr2XrimkdPXynKwkF"></div>
+<br>
+@endif
+<br>
 <script type="text/javascript" src="https://www.airvisual.com/scripts/widget_v2.0.js"></script>
-<br>
-<br>
 <div class="card card-body pb-0">
 <table class="table table-sm table-bordered">
   <thead bgcolor="#f0f0f0">
@@ -456,7 +461,7 @@
 
 			                    <div class="post-data">
 			                      <p class="font-small mb-0">
-			                        <i class="far fa-clock-o"></i> {{ $n->publishedAt }}
+			                        <i class="far fa-clock-o"></i> {{ date('d-m-Y',strtotime($n->publishedAt)) }}
 			                      </p>
 			                    </div>
 

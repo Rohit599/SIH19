@@ -43,8 +43,9 @@
  {{ Auth()->user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink-4">
-                            <a class="dropdown-item" href="{{ url('user') }}">My Ads</a>
-                            <a class="dropdown-item" href="{{ url('user/profile') }}">Profile</a>
+                            @if (Auth()->user()->is_admin == 1)
+                                <a class="dropdown-item" href="{{ url('admin') }}">Admin Panel</a>
+                            @endif
                             <a class="dropdown-item" href="{{ url('logout') }}">Log out</a>
                         </div>
                     </li>

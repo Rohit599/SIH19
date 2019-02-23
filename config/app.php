@@ -176,6 +176,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Jenssegers\Agent\AgentServiceProvider::class,
     ],
 
     /*
@@ -226,6 +227,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
 
     ],
 
