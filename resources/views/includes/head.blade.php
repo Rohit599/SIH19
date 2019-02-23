@@ -15,6 +15,8 @@
 <link href="{{ url('css/mdb.min.css') }}" rel="stylesheet">
 <link href="{{ url('css/style.css') }}" rel="stylesheet">
 <script type="text/javascript" src="{{ url('js/jquery-3.3.1.min.js') }}"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
 <style> 
 /*body {
   background-color: #fff;
