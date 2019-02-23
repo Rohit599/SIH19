@@ -22,3 +22,23 @@ $('#description').summernote({
 	maxHeight: null,             // set maximum height of editor
 	focus: false,
 });
+//tags
+$('.chips-placeholder').materialChip({
+  placeholder: 'Enter a tag',
+  secondaryPlaceholder: '+Tag',
+});
+
+$(document).on("submit", "#add_blog", function(e) {
+	var tags = $('.chips').materialChip('data');
+	var str = "";
+	var i;
+	for(i =0; i< tags.length; i++) {
+		if(i != 0)
+			str += ",";
+		str += tags[i]['tag'];
+	}
+	$('#tags').val(str);
+	//e.preventDefault();
+	$('#add_blog').submit();
+});
+

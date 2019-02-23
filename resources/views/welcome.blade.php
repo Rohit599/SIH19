@@ -273,7 +273,7 @@ aria-hidden="true">
 							<section class="text-center my-5">
 
 								<!-- Section heading -->
-								<h2 class="h1-responsive font-weight-bold my-5">Recent posts</h2>
+								<h2 class="h1-responsive font-weight-bold my-5">Recent posts<a href="{{ url('blog/create') }}" type="button" class="btn blue-gradient btn-rounded"><i class="fa fa-plus"></i>Write a post</a></h2>
 								<!-- Section description -->
 								<p class="dark-grey-text w-responsive mx-auto mb-5">Duis aute irure dolor in reprehenderit in voluptate velit
 									esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
