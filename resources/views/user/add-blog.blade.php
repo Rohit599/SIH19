@@ -1,4 +1,5 @@
 @extends('layouts.default')
+@section('content')
 <main style="margin-top: 6rem;">
 	<div class="container">
 		<!-- Material form contact -->
@@ -57,5 +58,4 @@
 		<!-- Material form contact -->
 	</div>
 </main>
-@section('content')
 @stop

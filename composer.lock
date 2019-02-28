@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ade443a04fd5c7fdd9cb3bc6692f8641",
+    "content-hash": "f0641179321de04fc9919af5cd8df9db",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -2487,6 +2487,43 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "sightengine/client-php",
+            "version": "1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sightengine/client-php.git",
+                "reference": "5d1eb8acf7c651eedb91590da63cbe02805b9ed4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sightengine/client-php/zipball/5d1eb8acf7c651eedb91590da63cbe02805b9ed4",
+                "reference": "5d1eb8acf7c651eedb91590da63cbe02805b9ed4",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Sightengine\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Sightengine Team",
+                    "homepage": "https://sightengine.com"
+                }
+            ],
+            "description": "Sightengine PHP client",
+            "homepage": "https://sightengine.com",
+            "time": "2018-05-28T12:07:30+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
