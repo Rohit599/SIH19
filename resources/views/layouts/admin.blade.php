@@ -1,11 +1,9 @@
 <!doctype html>
 <html>
-    @include('includes.head')
-    <style type="text/css">
-    	
+    @include('includes.admin_head')
+    <style type="text/css">    	
     	body{
     		background-color: #eeeeee;
-    	    padding-top:40px;
     	}
     </style>
 <body class="fixed-sn deep-purple-skin">
@@ -13,7 +11,7 @@
     <main>
 		@yield('content')
 	</main>
-	@include('includes.footer')
+	@include('includes.admin_footer')
 	<script type="text/javascript">
 		// SideNav Button Initialization
 		$(".button-collapse").sideNav();
