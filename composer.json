@@ -16,7 +16,9 @@
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
         "laravolt/avatar": "^2.2",
-        "yajra/laravel-datatables": "^1.0"
+        "yajra/laravel-datatables": "^1.0",
+        "sightengine/client-php": "^1.3"
+
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -7,23 +7,26 @@ use App\Blog;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use Auth;
+use App\Tag;
+use App\BlogTag;
 
 class BlogController extends Controller
 {
     public function store(Request $request)
     {
+        // dd($request);
         $input = $request->all();
-
         $request->validate([
             'title' => 'required|max:100',
-            'content' => 'required',
+            'description' => 'required',
         ]);
 
         $blog = new Blog;
         $blog->user_id = Auth::user()->id;
         $blog->title = $input['title'];
-        $blog->content = $input['content'];
+        $blog->content = $input['description'];
         // $issue->user_id = Auth::id();
+
         $file = Input::file('upload_file');
         if ($file != null) {
             $file_name = uniqid().$file->getClientOriginalName();
@@ -32,13 +35,32 @@ class BlogController extends Controller
             $file_mime = $file->getMimeType();
 
             if (!in_array($file_ex, array('jpg','png','jpeg'))) {
-                return back()->with(['msg' => 'Invalid file type. Upload files in pdf format only', 'class' => 'alert-danger']);
+                return back()->with(['msg' => 'Invalid file type. Upload files in jpg,jpeg,png format only', 'class' => 'alert-danger']);
             }
             $newname = $file_name;
-            $blog->cover_image = $newname;
+            $blog->cover_img = $newname;
             $file->move('uploads/images', $newname);
         }
         $blog->save();
+
+        $tags = explode(',', $input['tags']);
+        foreach ($tags as $t) {
+            $c = Tag::select('id')->where('name', $t)->first();
+            if ($c == null) {
+                $tag = new Tag;
+                $tag->name = $t;
+                $tag->save();
+                $t_id = $tag->id;
+            } else {
+                $t_id = $c->id;
+            }
+
+            $bt = new BlogTag;
+            $bt->blog_id = $blog->id;
+            $bt->tag_id = $t_id;
+            $bt->save();
+        }
+
         return back()->with(['msg' =>'Blog added successfully. It will be posted as soon as the admin approves it.', 'class' => 'alert-success']);
     }
 

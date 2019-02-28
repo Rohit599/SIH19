@@ -12,15 +12,6 @@ Route::get('/', function () {
     return view('welcome', ['news' => $arr->articles, 'issues' => $issues]);
 })->name('login');
 
-Route::get('blog/create', function () {
-        return view('user.add-blog');
-})->name('userCreateBLog');
-    Route::post('blog', 'BlogController@store')->name('blog.store');
-    Route::get('blogs', 'BlogController@index');
-    Route::get('blogs/{blog}/edit', 'BlogController@edit');
-    Route::put('blogs/{blog}/update', 'BlogController@update');
-    Route::delete('blogs/{blog}/delete', 'BlogController@delete')->name('blog.destroy');
-
 // Route::get('/test', function () {
 //     dd(sentimentScore("Air Pollution is deteriorating this environment. Polythen should be banned. I was surprised and happy. "));
 // });
@@ -55,14 +46,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('issues/{issue}/update', 'IssueController@update');
     Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('issue.destroy');
 
-    // Route::get('blog/create', function () {
-    //     return view('user.add-blog');
-    // })->name('userCreateBLog');
-    // Route::post('blog', 'BlogController@store')->name('blog.store');
-    // Route::get('blogs', 'BlogController@index');
-    // Route::get('blogs/{blog}/edit', 'BlogController@edit');
-    // Route::put('blogs/{blog}/update', 'BlogController@update');
-    // Route::delete('blogs/{blog}/delete', 'BlogController@delete')->name('blog.destroy');
+    Route::get('blog/create', function () {
+        return view('user.add-blog');
+    })->name('userCreateBLog');
+    Route::post('blog', 'BlogController@store')->name('blog.store');
+    Route::get('blogs', 'BlogController@index');
+    Route::get('blogs/{blog}/edit', 'BlogController@edit');
+    Route::put('blogs/{blog}/update', 'BlogController@update');
+    Route::delete('blogs/{blog}/delete', 'BlogController@delete')->name('blog.destroy');
 });
 
 Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function () {
