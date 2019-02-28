@@ -7,7 +7,10 @@ use App\Issue;
 use Validator;
 use Illuminate\Support\Facades\Input;
 use Auth;
-
+use App\Tag;
+use App\IssueTag;
+use \Sightengine\SightengineClient;
+ 
 class IssueController extends Controller
 {
     public function store(Request $request)
@@ -30,9 +33,16 @@ class IssueController extends Controller
         $issue->pollution_id = $input['pollution'];
         $issue->latitude = $input['latitude'];
         $issue->longitude = $input['longitude'];
-        $issue->sentiment = 5;
+        $sc = sentimentScore(strip_tags($input['description']))*100;
+        $issue->sentiment = round($sc, 2);
         $issue->status = 1;
         $file = Input::file('upload_file');
+        $image = Input::file('upload_pic');
+        $client = new SightengineClient('129557778', 'RFYJfHR5odMZRU6ewtjx');
+        $output = $client->check(['nudity','wad','offensive','scam'])->set_file($image);
+        if ($output->nudity->safe < 0.75) {
+            return back()->with(['msg' => 'Do not upload nude pics', 'class' => 'alert-danger']);
+        }
         if ($file != null) {
             $file_name = uniqid().$file->getClientOriginalName();
             $file_size = round($file->getSize() / 1024);
@@ -40,15 +50,47 @@ class IssueController extends Controller
             $file_mime = $file->getMimeType();
 
             if (!in_array($file_ex, array('pdf'))) {
-                return back()->withErrors('Invalid filetype. Please upload only pdfs.');
+                return back()->with(['msg' => 'Invalid filetype. Please upload only pdfs.' , 'class' => 'alert-danger']);
             }
 
             $newname = $file_name;
             $issue->document = $newname;
             $file->move('uploads', $newname);
         }
+        if ($image != null) {
+            $file_name = uniqid().$image->getClientOriginalName();
+            $file_size = round($image->getSize() / 1024);
+            $file_ex = $image->getClientOriginalExtension();
+            $file_mime = $image->getMimeType();
+
+            if (!in_array($file_ex, array('jpg','png','jpeg'))) {
+                return back()->with(['msg' => 'Invalid file type. Upload files in jpg,jpeg,png format only', 'class' => 'alert-danger']);
+            }
+
+            $newname = $file_name;
+            $issue->image = $newname;
+            $image->move('uploads', $newname);
+        }
         $issue->save();
-        return back();
+        $tags = generateTag(strip_tags($input['description']));
+        foreach ($tags as $t) {
+            $c = Tag::select('id')->where('name', $t)->first();
+            if ($c == null) {
+                $tag = new Tag;
+                $tag->name = $t;
+                $tag->save();
+                $t_id = $tag->id;
+            } else {
+                $t_id = $c->id;
+            }
+
+            $it = new IssueTag;
+            $it->issue_id = $issue->id;
+            $it->tag_id = $t_id;
+            $it->save();
+        }
+        return back()->with(['msg' =>'Issue added successfully. It will be posted as soon as the admin approves it.', 'class' => 'alert-success']);
+        ;
 
         // return back()->with(['msg' =>'issue added successfully.', 'class' => 'alert-success']);
     }

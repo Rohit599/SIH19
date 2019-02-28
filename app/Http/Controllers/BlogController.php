@@ -35,7 +35,7 @@ class BlogController extends Controller
             $file_mime = $file->getMimeType();
 
             if (!in_array($file_ex, array('jpg','png','jpeg'))) {
-                return back()->with(['msg' => 'Invalid file type. Upload files in pdf format only', 'class' => 'alert-danger']);
+                return back()->with(['msg' => 'Invalid file type. Upload files in jpg,jpeg,png format only', 'class' => 'alert-danger']);
             }
             $newname = $file_name;
             $blog->cover_img = $newname;
