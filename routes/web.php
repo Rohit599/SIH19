@@ -69,7 +69,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function 
     Route::get('/', function () {
         $user = User::count();
         $air_issue = Issue::where('pollution_id', '1')->count();
-        $noice_issue = Issue::where('pollution_id', '2')->count();
+        $noise_issue = Issue::where('pollution_id', '2')->count();
         $soil_issue = Issue::where('pollution_id', '3')->count();
         $water_issue = Issue::where('pollution_id', '4')->count();
         $issue_date = Issue::select(DB::raw('DATE(created_at) as date'), DB::raw('count(id) as total'))
@@ -86,10 +86,15 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function 
             'user' => $user,
             'blog' => $blog,
             'air_issue' => $air_issue,
-            'noice_issue' => $noice_issue,
+            'noise_issue' => $noise_issue,
             'soil_issue' => $soil_issue,
             'water_issue' => $water_issue,
             'issue_date' => $issue_date
         ]);
     });
+
+    Route::get('issues', function() {
+        return view('admin.issues');
+    });
+    Route::get('dt_issues', 'Admin\IssueController@data')->name('get.issues');
 });
