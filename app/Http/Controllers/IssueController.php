@@ -23,6 +23,7 @@ class IssueController extends Controller
             'pollution' => 'required|numeric',
             'latitude' => 'required|between:-90,90',
             'longitude' => 'required|between:-180,180',
+            'location' =>'required'
         ]);
         
         $issue = new Issue;
@@ -33,6 +34,7 @@ class IssueController extends Controller
         $issue->pollution_id = $input['pollution'];
         $issue->latitude = $input['latitude'];
         $issue->longitude = $input['longitude'];
+        $issue->address = $input['location'];
         $sc = sentimentScore(strip_tags($input['description']))*100;
         $issue->sentiment = round($sc, 2);
         $issue->status = 1;

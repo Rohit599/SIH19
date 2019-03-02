@@ -14,7 +14,7 @@
 		    longitude = position.coords.longitude;
 		    $("#latitude").val(latitude);
 		    $("#longitude").val(longitude);
-		    var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+position.coords.latitude+","+position.coords.longitude+"&location_type=ROOFTOP&result_type=street_address&key=AIzaSyClAb86kVhydjMRAuOF1nZtMZNmCpgflJ8"
+		    var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+position.coords.latitude+","+position.coords.longitude+"&key=AIzaSyClAb86kVhydjMRAuOF1nZtMZNmCpgflJ8"
 		    var data ="";
 		    var loc = {
 		  	lat : position.coords.latitude,
@@ -55,7 +55,8 @@
 		  	longitude = location.lng();
 		  	$("#latitude").val(latitude);
 		  	$("#longitude").val(longitude);
-		  	var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+location.lat()+","+location.lng()+"&location_type=ROOFTOP&result_type=street_address&key=AIzaSyClAb86kVhydjMRAuOF1nZtMZNmCpgflJ8"
+		  	// var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+location.lat()+","+location.lng()+"&location_type=ROOFTOP&result_type=street_address&key=AIzaSyClAb86kVhydjMRAuOF1nZtMZNmCpgflJ8";
+		  	var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng="+location.lat()+","+location.lng()+"&key=AIzaSyClAb86kVhydjMRAuOF1nZtMZNmCpgflJ8";
 		  	var data ="";
 		  	var loc = {
 		  	lat : location.lat(),
