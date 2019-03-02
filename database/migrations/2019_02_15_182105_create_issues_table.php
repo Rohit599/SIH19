@@ -21,6 +21,7 @@ class CreateIssuesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->decimal('latitude');
             $table->decimal('longitude');
+            $table->string('address');
             $table->string('document')->nullable();
             $table->string('image');
             $table->integer('sentiment');

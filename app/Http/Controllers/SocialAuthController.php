@@ -19,12 +19,16 @@ class SocialAuthController extends Controller
         $user = Socialite::with($service)->user();
         $u_id = User::select('id')->where('email', $user->email)->first();
         if (empty($u_id)) {
-            $u['name'] = $user->name;
-            $u['email'] = $user->email;
-            return redirect('register')->with(['u' => $u]);
+            $u = new User;
+            $u->name = $user->name;
+            $u->email = $user->email;
+            $u->save();
+            $u_id = $u->id;
+        } else {
+            $u_id = $u_id->id;
         }
 
-        Auth::loginUsingId($u_id->id);
+        Auth::loginUsingId($u_id);
         return redirect('/');
     }
 }

@@ -19,7 +19,13 @@
             <tr>
                 <th>Id</th>
                 <th>Title</th>
-            </tr>
+                <th>Address</th>
+                <th>Pollution<br>Type</th>
+                <th>Sentiment</th>
+                <th>User</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>Change Status</th>
         </thead>
     </table>
         </div>
@@ -39,7 +45,14 @@ $(function() {
         ajax: '{!! route('get.issues') !!}',
         columns: [
             { data: 'id', name: 'id' },
-            { data: 'title', name: 'title' }
+            { data: 'title', name: 'title' },
+            { data: 'address', name: 'address' },
+            { data: 'pollution', name: 'pollution' },
+            { data: 'sentiment', name: 'sentiment' },
+            { data: 'user', name: 'user' },
+            { data: 'status', name: 'status' },
+            { data: 'created_at', name: 'created_at' },
+            { data: 'change_status', name: 'change_status' }
         ]
     });
 });
