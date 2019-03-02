@@ -857,7 +857,7 @@ header{
 
 											<!-- Featured image -->
 											<div class="view overlay rounded z-depth-2 mb-4">
-												<img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/81.jpg" alt="Sample image">
+												<img class="img-fluid" src="{{asset('uploads/images/'.$blog->cover_img)}}" alt="Sample image">
 												<a>
 													<div class="mask rgba-white-slight"></div>
 												</a>
