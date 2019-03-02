@@ -9,7 +9,8 @@ Route::get('/', function () {
     $res = $client->request('GET', 'https://newsapi.org/v2/everything?q=environment&sortBy=publishedAt&apiKey=665f0a517e85463fb21017065595b4e5&sources=the-hindu', []);
     $arr = json_decode($res->getBody());
     $issues = Issue::all()->toArray();
-    return view('welcome', ['news' => $arr->articles, 'issues' => $issues]);
+    $blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
+    return view('welcome', ['news' => $arr->articles, 'issues' => $issues, 'blogs' => $blogs]);
 })->name('login');
 
 // Route::get('/test', function () {
@@ -84,7 +85,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function 
         ]);
     });
 
-    Route::get('issues', function() {
+    Route::get('issues', function () {
         return view('admin.issues');
     });
     Route::get('dt_issues', 'Admin\IssueController@data')->name('get.issues');
