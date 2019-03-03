@@ -12,24 +12,29 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
                     <a class="nav-link" href="{{ url('/') }}">
-                        Home
+                        HOME
                     </a>
                 </li>
-                <li class="nav-item {{ Request::is('sell') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ url('/sell') }}">
-                        Sell Now
-                    </a>
-                </li>
-                <li class="nav-item {{ Request::is('about') ? 'active' : '' }}">
-                    <a class="nav-link" href="{{ url('/about') }}">
-                        About Us
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://m.me/full2study" target="_blank">
-                        Contact Us
-                    </a>
-                </li>
+                <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" id="newsDropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+                          aria-expanded="false">NEWS</a>
+                          <div class="dropdown-menu dropdown-primary" aria-labelledby="newsDropdownMenu">
+                            <a class="dropdown-item" href="#">News Release</a>
+                            <a class="dropdown-item" href="{{url('blogs')}}">Blogs</a>
+                            <a class="dropdown-item" href="#">Impact Stories</a>
+                          </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle " id="issuesDropdownMenu" data-toggle="dropdown" aria-haspopup="true"
+                          aria-expanded="false">ISSUES</a>
+                          <div class="dropdown-menu dropdown-primary" aria-labelledby="issuesDropdownMenu">
+                            <a class="dropdown-item" href="{{url('issue/create')}}">Create Issue</a>
+                            <a class="dropdown-item" href="">View Issue</a>
+                          </div>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">INITIATIVES</a>
+                        </li>
             </ul>
             <ul class="navbar-nav nav-flex-icons">
                 @if (!Auth::check())

@@ -16,7 +16,7 @@
 
 		      <!-- Excerpt -->
 		      <h3 class="h2 mb-2">{{$issue->title}}</h3>
-		      <p class="font-weight-normal">{{$issue->description}} <span id="dots">...</span><span id="more"></span></p><br>
+		      <p class="font-weight-normal">{{strip_tags($issue->description)}} </p><br>
 		      <div class="row" style="color: gray; font-size: 18px; font-weight: bold; font-family: Arial; ">
 		      <div class="col s1" style="border-right: 2px solid grey;">4033 ACTIONS THIS WEEK</div>
 		      <div class="col s1" style="border-right: 2px solid grey;">40,763 SUPPORTERS</div>

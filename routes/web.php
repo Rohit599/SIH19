@@ -12,7 +12,8 @@ Route::get('/', function () {
     $arr = json_decode($res->getBody());
     $issues = Issue::orderBy('created_at', 'desc')->take(6)->get()->toArray();
     $blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
-    return view('welcome', ['news' => $arr->articles, 'issues' => $issues, 'blogs' => $blogs]);
+    $allissues = Issue::all()->pluck('latitude', 'longitude')->toArray();
+    return view('welcome', ['news' => $arr->articles, 'issues' => $issues, 'blogs' => $blogs, 'allissues' => $allissues]);
 })->name('login');
 
 // Route::get('/test', function () {
