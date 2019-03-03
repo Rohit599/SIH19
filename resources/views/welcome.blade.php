@@ -633,7 +633,7 @@ header{
 													<div class="card">
 														<!-- Card image -->
 														<div class="view overlay">
-															<img class="card-img-top" src="{{asset('uploads/images/'.$issues[0]['image'])}}" alt="Card image cap">
+															<img class="card-img-top" src="{{asset('uploads/'.$issues[0]['image'])}}" alt="Card image cap">
 															<a>
 																<div class="mask rgba-white-slight"></div>
 															</a>
