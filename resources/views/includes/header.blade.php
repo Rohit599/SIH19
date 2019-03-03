@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar blue-gradient">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <strong>{{ config('app.name') }}</strong>
+            <strong><img src="{{ url('img/logo.png') }}" alt="{{ config('app.name') }}" height="45px"></strong>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7"
           aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img src="{{ Avatar::create(Auth()->user()->name)->toBase64() }}" height="30px"/>
- {{ Auth()->user()->name }}
+                            {{ Auth()->user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink-4">
                             @if (Auth()->user()->is_admin == 1)
