@@ -11,7 +11,6 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
-        dd('a');
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             // 'email' => ['required_unless:contact_no', 'string', 'email', 'max:255', 'unique:users'],
@@ -31,8 +30,6 @@ class UserController extends Controller
         $user->save();
 
         Auth::loginUsingId($user->id);
-
-        return redirect('/');
     }
 
     public function login(Request $request)

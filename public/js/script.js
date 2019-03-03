@@ -135,7 +135,7 @@ $(document).on("submit", "#form_register", function(e) {
         	url: '/register',
         	data: data, 
         	success: function( data ) {
-            	location.reload();
+                location.reload();
         	}
     	});
 	}
