@@ -69,6 +69,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('blogs/{blog}/edit', 'BlogController@edit');
     Route::put('blogs/{blog}/update', 'BlogController@update');
     Route::delete('blogs/{blog}/delete', 'BlogController@delete')->name('blog.destroy');
+
+    Route::get('dash/blogs', function () {
+        return view('user.blogs');
+    });
+    Route::get('dt_blogs', 'BlogController@data')->name('user.blogs');
 });
 
 Route::get('blogs/{id}', function ($id) {

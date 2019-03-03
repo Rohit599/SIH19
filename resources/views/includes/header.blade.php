@@ -48,6 +48,9 @@
                             {{ Auth()->user()->name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink-4">
+                            <a class="dropdown-item" href="{{ url('dash/issues') }}">My Issues</a>
+                            <a class="dropdown-item" href="{{ url('dash/blogs') }}">My Blog Post</a>
+                            <a class="dropdown-item" href="{{ url('dash/profile') }}">Profile</a>
                             @if (Auth()->user()->is_admin == 1)
                                 <a class="dropdown-item" href="{{ url('admin') }}">Admin Panel</a>
                             @endif

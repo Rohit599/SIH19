@@ -12,6 +12,7 @@ use App\IssueTag;
 use \Sightengine\SightengineClient;
 use App\User;
 use App\IssueSign;
+use DataTables;
  
 class IssueController extends Controller
 {
