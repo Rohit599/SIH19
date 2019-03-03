@@ -40,11 +40,7 @@ class IssueController extends Controller
         $issue->status = 1;
         $file = Input::file('upload_file');
         $image = Input::file('upload_pic');
-        $client = new SightengineClient('129557778', 'RFYJfHR5odMZRU6ewtjx');
-        $output = $client->check(['nudity','wad','offensive','scam'])->set_file($image);
-        if ($output->nudity->safe < 0.75) {
-            return back()->with(['msg' => 'Do not upload nude pics', 'class' => 'alert-danger']);
-        }
+        
         if ($file != null) {
             $file_name = uniqid().$file->getClientOriginalName();
             $file_size = round($file->getSize() / 1024);
@@ -60,6 +56,11 @@ class IssueController extends Controller
             $file->move('uploads', $newname);
         }
         if ($image != null) {
+            $client = new SightengineClient('129557778', 'RFYJfHR5odMZRU6ewtjx');
+            $output = $client->check(['nudity','wad','offensive','scam'])->set_file($image);
+            if ($output->nudity->safe < 0.75) {
+                return back()->with(['msg' => 'Do not upload nude pics', 'class' => 'alert-danger']);
+            }
             $file_name = uniqid().$image->getClientOriginalName();
             $file_size = round($image->getSize() / 1024);
             $file_ex = $image->getClientOriginalExtension();
@@ -71,7 +72,7 @@ class IssueController extends Controller
 
             $newname = $file_name;
             $issue->image = $newname;
-            $image->move('uploads', $newname);
+            $image->move('uploads/images', $newname);
         }
         $issue->save();
         $tags = generateTag(strip_tags($input['description']));
@@ -100,7 +101,7 @@ class IssueController extends Controller
     public function index()
     {
         $issues = Issue::all();
-        return view('home', ['issues'=>$issues]);
+        return view('issues', ['issues'=>$issues]);
     }
 
     public function edit($id)
