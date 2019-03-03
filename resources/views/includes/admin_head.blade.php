@@ -12,6 +12,6 @@
 <!-- Bootstrap core CSS -->
 <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
 <!-- Material Design Bootstrap -->
-<link href="{{ url('css/mdb.min.css') }}" rel="stylesheet">
+<link href="{{ url('css/mdb.css') }}" rel="stylesheet">
 <link href="{{ url('css/style.css') }}" rel="stylesheet">
 @yield('css')
