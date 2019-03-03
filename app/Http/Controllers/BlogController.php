@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use Auth;
 use App\Tag;
 use App\BlogTag;
+use DataTables;
 
 class BlogController extends Controller
 {
@@ -110,5 +111,51 @@ class BlogController extends Controller
             $blog->delete();
             return back()->with(['msg' =>'blog deleted successfully.', 'class' => 'alert-success']);
         }
+    }
+
+    public function data()
+    {
+        $model = Blog::where('user_id', Auth::id());
+
+        return DataTables::eloquent($model)
+            ->editColumn('id', function (Blog $b) {
+                return '#' . $b->id;
+            })
+            ->editColumn('title', function (Blog $b) {
+                return '<a href="'.url('blog/'.$b->id).'">h5 class="mt-0 font-weight-bold">' . $b->title.'</h5></a><br>'.substr($b->content, 0, 100).'...';
+            })
+            ->editColumn('cover_img', function (Blog $b) {
+                return '<img class="d-flex mb-3 mx-auto media-image z-depth-1" src="'.url('uploads/'.$b->cover_img).'">';
+            })
+            ->editColumn('status', function (Blog $b) {
+                if ($b->status == 1) {
+                    return 'Active';
+                } else {
+                    return 'Deleted';
+                }
+            })
+            ->editColumn('created_at', function (Blog $b) {
+                return $b->created_at->diffForHumans();
+            })
+            ->editColumn('change_status', function (Blog $b) {
+                return '
+                <form action="'.url('blog/edit').'" method="POST">
+                <input type="hidden" value="'.$b->id.'" name="id">
+                <br>
+                <input type="submit" class="btn btn-sm btn-primary" value="Edit">
+                </form>
+                <form action="'.url('blog/delete').'" method="POST">
+                <input type="hidden" value="'.$b->id.'" name="id">
+                <br>
+                <input type="submit" class="btn btn-sm btn-danger" value="Delete">
+                </form>';
+            })
+            ->rawColumns([
+                'title',
+                'user',
+                'cover_img',
+                'change_status'
+            ])
+            ->toJson();
     }
 }
