@@ -19,6 +19,7 @@ class CreateBlogsTable extends Migration
             $table->text('content');
             $table->unsignedInteger('user_id');
             $table->string('cover_img');
+            $table->boolean('status')->default('1');
             $table->timestamps();
         });
     }

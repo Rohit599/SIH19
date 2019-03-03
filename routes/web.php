@@ -93,4 +93,14 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function 
         return view('admin.issues');
     });
     Route::get('dt_issues', 'Admin\IssueController@data')->name('get.issues');
+
+    Route::get('users', function () {
+        return view('admin.users');
+    });
+    Route::get('dt_users', 'Admin\UserController@data')->name('get.users');
+
+    Route::get('blogs', function () {
+        return view('admin.blogs');
+    });
+    Route::get('dt_blogs', 'Admin\BlogController@data')->name('get.blogs');
 });

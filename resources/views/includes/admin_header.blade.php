@@ -14,9 +14,9 @@
           <ul class="collapsible collapsible-accordion">
             <li><a href="{{ url('admin') }}" class="waves-effect"><i class="fas fa-home"></i> Home</a></li>
             <li><a href="{{ url('admin/issues') }}" class="waves-effect"><i class="fas fa-bolt"></i> Issue</a></li>
-            <li><a href="{{ url('admin/user') }}" class="waves-effect"><i class="fas fa-users"></i> User</a></li>
+            <li><a href="{{ url('admin/users') }}" class="waves-effect"><i class="fas fa-users"></i> User</a></li>
             <li><a href="{{ url('admin/blog') }}" class="waves-effect"><i class="fas fa-align-left"></i> Blog</a></li>
-            <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-eye"></i> About<i class="fas fa-angle-down rotate-icon"></i></a>
+{{--             <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-eye"></i> About<i class="fas fa-angle-down rotate-icon"></i></a>
               <div class="collapsible-body">
                 <ul>
                   <li><a href="#" class="waves-effect">Introduction</a>
@@ -25,7 +25,7 @@
                   </li>
                 </ul>
               </div>
-            </li>
+            </li> --}}
           </ul>
         </li>
         <!--/. Side navigation links -->
@@ -41,7 +41,7 @@
       </div>
       <!-- Breadcrumb-->
       <div class="breadcrumb-dn mr-auto">
-        <p>Material Design for Bootstrap</p>
+        <p>Welcome {{ Auth()->user()->name }}</p>
       </div>
       <ul class="nav navbar-nav nav-flex-icons ml-auto">
         <li class="nav-item dropdown">
