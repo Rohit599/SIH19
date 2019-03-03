@@ -11602,8 +11602,7 @@ label.btn input[type="checkbox"]:disabled:checked + label:after {
     color: #fff; }
 
 select {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  display: none !important; }
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif }
   select.browser-default {
     display: block !important; }
   select:disabled {

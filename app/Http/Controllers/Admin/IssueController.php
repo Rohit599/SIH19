@@ -59,6 +59,9 @@ class IssueController extends Controller
                     return 'Solved';
                 }
             })
+            ->addColumn('sign_count', function (Issue $i) {
+                return $i->signs->count();
+            })
             ->editColumn('created_at', function (Issue $i) {
                 return $i->created_at->diffForHumans();
             })
