@@ -16,7 +16,7 @@ class IssueController extends Controller
 
         return DataTables::eloquent($model)
             ->editColumn('id', function (Issue $i) {
-                return '#' . $i->title;
+                return '#' . $i->id;
             })
             ->editColumn('title', function (Issue $i) {
                 return '<a href="'.url('issue/'.$i->id).'"><u>' . $i->title.'</u></a>';
