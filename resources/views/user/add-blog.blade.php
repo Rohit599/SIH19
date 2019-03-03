@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+@include('includes.login_modal')
 <main style="margin-top: 6rem;">
 	<div class="container">
 		<!-- Material form contact -->

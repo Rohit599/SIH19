@@ -3,6 +3,8 @@ use App\Pollution;
 use App\Blog;
 use App\Issue;
 use App\User;
+use App\IssueSign;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     $client = new GuzzleHttp\Client();
@@ -16,6 +18,11 @@ Route::get('/', function () {
 // Route::get('/test', function () {
 //     dd(sentimentScore("Air Pollution is deteriorating this environment. Polythen should be banned. I was surprised and happy. "));
 // });
+
+Route::get('/issues', function () {
+    $issues = Issue::withCount('signs')->orderBy('id', 'desc')->paginate(10);
+    return view('issues', ['issues' => $issues]);
+});
 
 Route::get('/redirect/{service}', 'SocialAuthController@redirect');
 Route::get('/callback/{service}', 'SocialAuthController@callback');
@@ -42,14 +49,16 @@ Route::group(['middleware' => ['auth']], function () {
         return view('user.add-issue')->with(compact('pollutions'));
     })->name('userCreateIssue');
     Route::post('issue', 'IssueController@store')->name('issue.store');
-    Route::get('issues', 'IssueController@index');
+    //Route::get('issues', 'IssueController@index');
     Route::get('issues/{issue}/edit', 'IssueController@edit');
     Route::put('issues/{issue}/update', 'IssueController@update');
     Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('issue.destroy');
     Route::get('issue/{issue}', function ($id) {
-        $issue = Issue::find($id);
-        return view('issue')->with(compact('issue'));
+        $issue = Issue::withCount('signs')->find($id);
+        $c = IssueSign::where('issue_id',$id)->where('user_id',Auth::id())->count();
+        return view('issue')->with(compact('issue','c'));
     });
+    Route::post('issue/sign', 'IssueController@sign');
 
     Route::get('blog/create', function () {
         return view('user.add-blog');
@@ -59,6 +68,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('blogs/{blog}/edit', 'BlogController@edit');
     Route::put('blogs/{blog}/update', 'BlogController@update');
     Route::delete('blogs/{blog}/delete', 'BlogController@delete')->name('blog.destroy');
+});
+
+Route::get('blogs/{id}', function ($id) {
+    $b = Blog::find($id);
+    return view('blog');
 });
 
 Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function () {

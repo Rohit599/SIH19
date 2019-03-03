@@ -5,6 +5,7 @@
 		<!-- Material form contact -->
 		<div class="jumbotron text-center hoverable p-4">
 
+			@include('includes.msg')
 		  <!-- Grid row -->
 		  <div class="row">
 
@@ -142,64 +143,40 @@
 		      <li class="completed">
 		        <a href="#!">
 		          <span class="circle">1</span>
-		          <span class="label"><h5 class="text-blue" style="font-weight: bold;">ADD YOUR NAME: SUPPORT RIGHT TO BREATHE</h5></span>
+		          <span class="label"><h5 class="text-blue" style="font-weight: bold;">SIGN PETITION</h5></span>
 		        </a>
 		        <!-- Section Description -->
 		        <!--Form div -->
 		        <div class="col-sm-12">
 		      <div class=" card step-content grey lighten-3" style="font-family: helvetica;">
-		          <h2 style="font-family: helvetica; font-color: blue;">TO:</h2> <h5> THE GOVERNMENT OF INDIA </h5>
-		          <div class="form-group">
-		 
-		            <textarea class="form-control text-justify" id="exampleFormControlTextarea3" rows="6">        
-		            </textarea>
-		          </div>
-		            <!-- Horizontal material form -->
+		      	@if($c == 1)
+			          <h5> You had already signed this petition. Thank for you support and don't forget to share it. </h5>
+
+		      	@elseif ($issue->signs_count < 100)
+		      		{{-- expr --}}
+		          <h5> Type your name to sign petition, this will be considered as your signature digitally. </h5>
 		            <!-- Default horizontal form -->
-		            <form>
+		            <form action="{{ url('issue/sign') }}" method="POST">
+		            	<input type="hidden" value="{{$issue->id}}" name="id" id="id">
+		            	@csrf
 		              <!-- Grid row -->
-
-		               <div class="form-group row">
-		                <!-- Default input -->   
-		                <div class="col-sm-6">
-		                  <input type="name" class="form-control" id="inputEmail3" placeholder="First Name">
-		                </div> 
-		               <div class="col-sm-6">
-		                  <input type="name" class="form-control" id="inputEmail3" placeholder="Last Name">
-		                </div>
-		              </div>
-
-
-		             <div class="form-group row">
-		                <!-- Default input -->   
-		                <div class="col-sm-4">
-		                  <input type="name" class="form-control" id="inputEmail3" placeholder="City">
-		                </div> 
-		               <div class="col-sm-4">
-		                  <input type="name" class="form-control" id="inputEmail3" placeholder="State">
-		                </div>
-		                <div class="col-sm-4">
-		                  <input type="name" class="form-control" id="inputEmail3" placeholder="ZIP Code">
-		                </div>
-		              </div>
-
-
 		              <div class="form-group row">
 		                <!-- Default input -->
-		                <div class="col-sm-6">
-		                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-		                </div>
-		                <div class="col-sm-6">
-		                  <input type="email" class="form-control" id="inputEmail3" placeholder="Contact Number (Optional)">
+		                <div class="col-sm-12">
+		                  <input type="text" class="form-control" id="name" name="name" placeholder="Name">
 		                </div>
 		              </div>
 		              <!-- Grid row -->
 		              <!-- Grid row -->
-		              <button class="btn blue-gradient my-4 btn-block waves-effect waves-light" type="submit">Sign Petition</button>
+		              <button type="submit" class="btn blue-gradient my-4 btn-block waves-effect waves-light" type="submit">Sign Petition</button>
 		              <!-- Grid row -->
 		            </form>
 		            <!-- Default horizontal form -->
 		            <!-- Horizontal material form -->
+		        @else
+			          <h5> This petition had already reached goal of 100 petition sign. </h5>
+
+		      	@endif
 		                     
 		      </div>
 		    </div>
@@ -255,10 +232,10 @@
 
 		<!--Right Side -->
 		  <div class="col-md-4">
-		    <p style="color: black; font-size: 72px; font-weight: bold; font-family: Verdana; margin-top: 200px; margin-left: 80px;"> 83,561 </p>
-		    <p style="color: black; font-size: 24px; font-weight: bold; font-family: Verdana; margin-top: -20px; margin-left: 80px;">Signatures OF 100,000 GOAL </p>
+		    <p style="color: black; font-size: 72px; font-weight: bold; font-family: Verdana; margin-top: 200px; margin-left: 80px;"> {{$issue->signs_count}} </p>
+		    <p style="color: black; font-size: 24px; font-weight: bold; font-family: Verdana; margin-top: -20px; margin-left: 80px;">Signatures OF 100 GOAL </p>
 		  <div class="progress">
-		  <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+		  <div class="progress-bar" role="progressbar" aria-valuenow="{{$issue->signs_count}}" aria-valuemin="0" aria-valuemax="100" style="width:{{$issue->signs_count}}%">
 		    70% Completed
 		  </div>
 		  </div>
