@@ -72,6 +72,7 @@ $(document).on("submit", "#form_register", function(e) {
 	var data = {};
 	data['name'] = $('#name1').val().trim();
 	data['email'] = $('#email1').val().trim();
+    data['contact_no1'] = $('#contact_no1').val().trim();
 	data['password'] = $('#password1').val().trim();
 	data['password_confirmation'] = $('#password_confirmation').val().trim();
 	if(data['name'] == ""){
@@ -80,9 +81,11 @@ $(document).on("submit", "#form_register", function(e) {
         flag = -1;
 	}
 
-	if (data['email'] == "") {
+	if (data['email'] == "" && data['contact_no']=="") {
 		clearErrorMsgField('#email1');
-        appendError("#email1", "E-mail of user is required");
+        clearErrorMsgField('#contact_no1');
+        appendError("#email1", "Input Email or contact no");
+        appendError("#contact_no1", "Input Email or contact no");
         flag = -1;
     }
 
@@ -132,7 +135,7 @@ $(document).on("submit", "#form_register", function(e) {
         	url: '/register',
         	data: data, 
         	success: function( data ) {
-            	location.reload();
+                location.reload();
         	}
     	});
 	}
@@ -143,11 +146,14 @@ $(document).on("submit", "#form_login", function(e) {
 	e.preventDefault();
 	var data = {};
 	data['email'] = $('#email').val().trim();
+    data['contact_no'] = $('#contact_no').val().trim();
 	data['password'] = $('#password').val().trim();
 
-	if (data['email'] == "") {
+	if (data['email'] == "" && data['contact_no']=="") {
 		clearErrorMsgField('#email');
-        appendError("#email", "E-mail of user is required");
+        clearErrorMsgField('#contact_no');
+        appendError("#email", "Input Email or contact no");
+        appendError("#contact_no", "Input Email or contact no");
         flag = -1;
     }
 

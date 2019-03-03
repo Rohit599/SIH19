@@ -16,6 +16,7 @@ Route::get('/', function () {
     return view('welcome', ['news' => $arr->articles, 'issues' => $issues, 'blogs' => $blogs, 'allissues' => $allissues]);
 })->name('login');
 
+
 // Route::get('/test', function () {
 //     dd(sentimentScore("Air Pollution is deteriorating this environment. Polythen should be banned. I was surprised and happy. "));
 // });
@@ -28,13 +29,13 @@ Route::get('/issues', function () {
 Route::get('/redirect/{service}', 'SocialAuthController@redirect');
 Route::get('/callback/{service}', 'SocialAuthController@callback');
 
-Route::get('register', function () {
-    if (session()->has('u')) {
-        return view('register', ['user' => session('u')]);
-    } else {
-        return view('register');
-    }
-});
+// Route::get('register', function () {
+//     if (session()->has('u')) {
+//         return view('register', ['user' => session('u')]);
+//     } else {
+//         return view('register');
+//     }
+// });
 Route::post('register', 'UserController@register')->name('user.register');
 
 Route::post('login', 'UserController@login');
@@ -56,14 +57,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('issue.destroy');
     Route::get('issue/{issue}', function ($id) {
         $issue = Issue::withCount('signs')->find($id);
-        $c = IssueSign::where('issue_id',$id)->where('user_id',Auth::id())->count();
-        return view('issue')->with(compact('issue','c'));
+        $c = IssueSign::where('issue_id', $id)->where('user_id', Auth::id())->count();
+        return view('issue')->with(compact('issue', 'c'));
     });
     Route::post('issue/sign', 'IssueController@sign');
-
-    Route::get('blog/create', function () {
+});
+Route::get('blog/create', function () {
         return view('user.add-blog');
-    })->name('userCreateBLog');
+})->name('userCreateBLog');
     Route::post('blog', 'BlogController@store')->name('blog.store');
     Route::get('blogs', 'BlogController@index');
     Route::get('blogs/{blog}/edit', 'BlogController@edit');

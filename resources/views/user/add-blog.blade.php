@@ -1,6 +1,8 @@
 @extends('layouts.default')
-@section('content')
+@section('header')
 @include('includes.login_modal')
+@stop
+@section('content')
 <main style="margin-top: 6rem;">
 	<div class="container">
 		<!-- Material form contact -->
@@ -50,11 +52,9 @@
 					<!-- Send button -->
 					<button class="btn btn-outline-info btn-rounded btn-block z-depth-0 my-4 waves-effect">Post</button>
 
-				</form>
+				</form>>
 				<!-- Form -->
-
 			</div>
-
 		</div>
 		<!-- Material form contact -->
 	</div>

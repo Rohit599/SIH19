@@ -77,8 +77,10 @@
 	}
 </script>
 @stop
-@section('content')
+@section('header')
 @include('includes.login_modal')
+@stop
+@section('content')
 <main style="margin-top: 6rem;">
 	<div class="container">
 		<!-- Material form contact -->

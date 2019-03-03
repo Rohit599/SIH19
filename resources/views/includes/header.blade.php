@@ -15,15 +15,16 @@
                         HOME
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" id="newsDropdownMenu" data-toggle="dropdown" aria-haspopup="true"
-                          aria-expanded="false">NEWS</a>
-                          <div class="dropdown-menu dropdown-primary" aria-labelledby="newsDropdownMenu">
-                            <a class="dropdown-item" href="#">News Release</a>
-                            <a class="dropdown-item" href="{{url('blogs')}}">Blogs</a>
-                            <a class="dropdown-item" href="#">Impact Stories</a>
-                          </div>
-                        </li>
+                <li class="nav-item {{ Request::is('/blogs') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('blogs') }}">
+                        BLOGS
+                    </a>
+                </li>
+                <li class="nav-item {{ Request::is(url('impactStories')) ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ url('impactStories') }}">
+                        IMPACT STORIES
+                    </a>
+                </li>
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle " id="issuesDropdownMenu" data-toggle="dropdown" aria-haspopup="true"
                           aria-expanded="false">ISSUES</a>

@@ -4,21 +4,19 @@
 aria-hidden="true">
 <div class="modal-dialog cascading-modal" role="document">
 	<div class="modal-content">
-
 		<!--Modal cascading tabs-->
 		<div class="modal-c-tabs">
-
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
 				<li class="nav-item waves-effect waves-light">
 					<a class="nav-link show active" data-toggle="tab" href="#panel17" role="tab" aria-selected="true">
 						<i class="fas fa-user mr-1"></i> Login</a>
-					</li>
-					<li class="nav-item waves-effect waves-light">
-						<a class="nav-link show" data-toggle="tab" href="#panel18" role="tab" aria-selected="false">
-							<i class="fas fa-user-plus mr-1"></i> Register</a>
-						</li>
-					</ul>
+				</li>
+				<li class="nav-item waves-effect waves-light">
+					<a class="nav-link show" data-toggle="tab" href="#panel18" role="tab" aria-selected="false">
+						<i class="fas fa-user-plus mr-1"></i> Register</a>
+				</li>
+			</ul>
 
 					<!-- Tab panels -->
 					<div class="tab-content">
@@ -33,6 +31,11 @@ aria-hidden="true">
 									<i class="fas fa-envelope prefix"></i>
 									<input type="text" id="email" class="form-control form-control-sm" name="email">
 									<label for="email">Your email</label>
+								</div>
+								<div class="md-form form-sm">
+									<i class="fas fa-phone prefix"></i>
+									<input type="tel" id="contact_no" class="form-control form-control-sm" name="contact_no">
+									<label for="contact_no">Your ContactNo.</label>
 								</div>
 
 								<div class="md-form form-sm">
@@ -75,7 +78,7 @@ aria-hidden="true">
 
 								@include('includes.msg')
 								<div class="md-form form-sm">
-									<i class="fas fa-envelope prefix"></i>
+									<i class="fas fa-user prefix"></i>
 									<input type="text" id="name1" class="form-control form-control-sm" name="name">
 									<label for="name1">Your name</label>
 								</div>
@@ -84,7 +87,11 @@ aria-hidden="true">
 									<input type="text" id="email1" class="form-control form-control-sm" name="email">
 									<label for="email1">Your email</label>
 								</div>
-
+								<div class="md-form form-sm">
+									<i class="fas fa-phone prefix"></i>
+									<input type="tel" id="contact_no1" class="form-control form-control-sm" name="contact_no1">
+									<label for="contact_no1">Your ContactNo.</label>
+								</div>
 								<div class="md-form form-sm">
 									<i class="fas fa-lock prefix"></i>
 									<input type="password" id="password1" class="form-control form-control-sm" name="password">
@@ -111,11 +118,10 @@ aria-hidden="true">
 									</div>
 									<button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
 								</div>
-							</div>
-							<!--/.Panel 8-->
+							</form>
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
