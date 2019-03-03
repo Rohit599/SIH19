@@ -11,27 +11,36 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
+        dd('a');
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'email' => ['required_unless:contact_no', 'string', 'email', 'max:255', 'unique:users'],
+            // 'contact_no1' => ['required_unless:email', 'number', 'min:60000000000', 'max:9999999999'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
 
         $user = new User;
         $user->name = $request->input('name');
-        $user->email = $request->input('email');
+        if ($request->input('email') !== "") {
+            $user->email = $request->input('email');
+        }
+        if ($request->input('contact_no1') !== "") {
+            $user->mob = $request->input('contact_no1');
+        }
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
         Auth::loginUsingId($user->id);
 
-        return redirect('home');
+        return redirect('/');
     }
 
     public function login(Request $request)
     {
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
-                return redirect(url('home'));
+                return redirect(url('/'));
+        } else if (Auth::attempt(['mob' => $request->input('contact_no'), 'password' => $request->input('password')])) {
+            return redirect(url('/'));
         } else {
             return back()->with(['msg' => 'The email/password is invalid', 'class' => 'alert-danger']);
         }
