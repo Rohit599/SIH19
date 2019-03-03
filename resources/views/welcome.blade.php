@@ -754,14 +754,14 @@ header{
 													<div class="card">
 														<!-- Card image -->
 														<div class="view overlay">
-															<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Card image cap">
+															<img class="card-img-top" src="{{asset('uploads/images/'.$issues[0]['image'])}}" alt="Card image cap">
 															<a>
 																<div class="mask rgba-white-slight"></div>
 															</a>
 														</div>
 
 														<!-- Button -->
-														<a class="btn-floating btn-action ml-auto mr-4" style="background-color: #40bff5"><i class="fas fa-chevron-right pl-1"></i></a>
+														<a class="btn-floating btn-action ml-auto mr-4" style="background-color: #40bff5" href="{{url('issue/'.$issues[0]['id'])}}"><i class="fas fa-chevron-right pl-1"></i></a>
 
 														<!-- Card content -->
 														<div class="card-body">
@@ -770,7 +770,7 @@ header{
 															<h4 class="card-title">{{$issues[0]['title']}}</h4>
 															<hr>
 															<!-- Text -->
-															<p class="card-text">{{$issues[0]['description']}}</p>
+															{{-- <p class="card-text">{{$issues[0]['description']}}</p> --}}
 
 														</div>
 
@@ -796,14 +796,14 @@ header{
 
 														<!-- Card image -->
 														<div class="view overlay">
-															<img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/food.jpg" alt="Issue Image">
+															<img class="card-img-top" src="{{asset('uploads/images/'.$issues[$i]['image'])}}" alt="Issue Image">
 															<a>
 																<div class="mask rgba-white-slight"></div>
 															</a>
 														</div>
 
 														<!-- Button -->
-														<a class="btn-floating btn-action ml-auto mr-4"><i class="fas fa-chevron-right pl-1" style="background-color: #40bff5"></i></a>
+														<a class="btn-floating btn-action ml-auto mr-4"><i class="fas fa-chevron-right pl-1" style="background-color: #40bff5" href="{{url('issue/'.$issues[$i]['id'])}}"></i></a>
 
 														<!-- Card content -->
 														<div class="card-body">
@@ -812,7 +812,7 @@ header{
 															<h4 class="card-title">{{$issues[$i]['title']}}</h4>
 															<hr>
 															<!-- Text -->
-															<p class="card-text">{{$issues[$i]['description']}}</p>
+															{{-- <p class="card-text">{{$issues[$i]['description']}}</p> --}}
 
 														</div>
 
@@ -835,7 +835,7 @@ header{
 										@endif
 									</div>
 									<div class="text-center">
-										<h2 class="h1-responsive font-weight-bold my-5"><a id="homepage-cta-news" alt="See all News" class="btn btn-info btn-sm waves-effect waves-light" href="https://mdbootstrap.com/publications/front-end/bootstrap-news/" role="button">See all Issues</a> </h2>
+										<h2 class="h1-responsive font-weight-bold my-5"><a id="homepage-cta-news" alt="See all News" class="btn btn-info btn-sm waves-effect waves-light" href="{{url('issues')}}" role="button">See all Issues</a> </h2>
 									</div>
 								</section>
 								<hr class="my-5">
