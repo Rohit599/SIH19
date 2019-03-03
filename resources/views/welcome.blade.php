@@ -67,8 +67,7 @@ header{
 	function changeOpacity() {
 		heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
 	}
-
-	      // Heatmap data: 500 Points
+	    // Heatmap data: 500 Points
 	      function getPoints() {
 	      	return [
 	      	new google.maps.LatLng(28.782551, 77.445368),
@@ -803,7 +802,7 @@ header{
 														</div>
 
 														<!-- Button -->
-														<a class="btn-floating btn-action ml-auto mr-4"><i class="fas fa-chevron-right pl-1" style="background-color: #40bff5;" href="{{url('issue/'.$issues[$i]['id'])}}"></i></a>
+														<a href="{{url('issue/'.$issues[$i]['id'])}}" class="btn-floating btn-action ml-auto mr-4"><i class="fas fa-chevron-right pl-1" style="background-color: #40bff5;"></i></a>
 
 														<!-- Card content -->
 														<div class="card-body">
@@ -884,6 +883,9 @@ header{
 
 									</div>
 									<!-- Grid row -->
+									<div class="text-center">
+										<h2 class="h1-responsive font-weight-bold my-5"><a id="homepage-cta-news" alt="See all Posts" class="btn btn-info btn-sm waves-effect waves-light" href="{{url('blogs')}}" role="button">See all Posts</a> </h2>
+									</div>
 
 								</section>
 								<!-- Section: Blog v.2 -->

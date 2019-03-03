@@ -67,7 +67,7 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = Blog::all();
-        return view('home', ['blogs'=>$blogs]);
+        return view('blogs', ['blogs'=>$blogs]);
     }
 
     public function edit($id)
