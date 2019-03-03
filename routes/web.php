@@ -3,6 +3,8 @@ use App\Pollution;
 use App\Blog;
 use App\Issue;
 use App\User;
+use App\IssueSign;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     $client = new GuzzleHttp\Client();
@@ -18,7 +20,7 @@ Route::get('/', function () {
 // });
 
 Route::get('/issues', function () {
-    $issues = Issue::orderBy('id','desc')->paginate(10);
+    $issues = Issue::withCount('signs')->orderBy('id', 'desc')->paginate(10);
     return view('issues', ['issues' => $issues]);
 });
 
@@ -52,9 +54,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('issues/{issue}/update', 'IssueController@update');
     Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('issue.destroy');
     Route::get('issue/{issue}', function ($id) {
-        $issue = Issue::find($id);
-        return view('issue')->with(compact('issue'));
+        $issue = Issue::withCount('signs')->find($id);
+        $c = IssueSign::where('issue_id',$id)->where('user_id',Auth::id())->count();
+        return view('issue')->with(compact('issue','c'));
     });
+    Route::post('issue/sign', 'IssueController@sign');
 
     Route::get('blog/create', function () {
         return view('user.add-blog');

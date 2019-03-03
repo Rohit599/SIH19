@@ -10,6 +10,8 @@ use Auth;
 use App\Tag;
 use App\IssueTag;
 use \Sightengine\SightengineClient;
+use App\User;
+use App\IssueSign;
  
 class IssueController extends Controller
 {
@@ -98,11 +100,11 @@ class IssueController extends Controller
         // return back()->with(['msg' =>'issue added successfully.', 'class' => 'alert-success']);
     }
 
-    public function index()
-    {
-        $issues = Issue::all();
-        return view('issues', ['issues'=>$issues]);
-    }
+    // public function index()
+    // {
+    //     $issues = Issue::all();
+    //     return view('issues', ['issues'=>$issues]);
+    // }
 
     public function edit($id)
     {
@@ -139,6 +141,19 @@ class IssueController extends Controller
         if (!is_null($issue)) {
             $issue->delete();
             return back()->with(['msg' =>'issue deleted successfully.', 'class' => 'alert-success']);
+        }
+    }
+
+    public function sign(Request $request)
+    {
+        if(Auth()->user()->name == $request->input('name')) {
+            $is = new IssueSign;
+            $is->issue_id = $request->input('id');
+            $is->user_id = Auth::id();
+            $is->save();
+            return back()->with(['msg' => 'You had successfully signed this petition', 'class' => 'alert-success']);
+        } else {
+            return back()->with(['msg' => 'You had entered incorrect name', 'class' => 'alert-danger']);
         }
     }
 }

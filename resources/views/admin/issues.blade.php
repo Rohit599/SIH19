@@ -24,6 +24,7 @@
                 <th>Sentiment</th>
                 <th>User</th>
                 <th>Status</th>
+                <th>Petition<br>Sign</th>
                 <th>Created At</th>
                 <th>Change Status</th>
         </thead>
@@ -51,6 +52,7 @@ $(function() {
             { data: 'sentiment', name: 'sentiment' },
             { data: 'user', name: 'user' },
             { data: 'status', name: 'status' },
+            { data: 'sign_count', name: 'sign_count' },
             { data: 'created_at', name: 'created_at' },
             { data: 'change_status', name: 'change_status' }
         ]
