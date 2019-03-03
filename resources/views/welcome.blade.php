@@ -796,14 +796,14 @@ header{
 
 														<!-- Card image -->
 														<div class="view overlay">
-															<img class="card-img-top" src="{{asset('uploads/images/'.$issues[$i]['image'])}}" alt="Issue Image">
+															<img class="card-img-top" src="{{asset('uploads/'.$issues[$i]['image'])}}" alt="Issue Image">
 															<a>
 																<div class="mask rgba-white-slight"></div>
 															</a>
 														</div>
 
 														<!-- Button -->
-														<a class="btn-floating btn-action ml-auto mr-4"><i class="fas fa-chevron-right pl-1" style="background-color: #40bff5" href="{{url('issue/'.$issues[$i]['id'])}}"></i></a>
+														<a class="btn-floating btn-action ml-auto mr-4"><i class="fas fa-chevron-right pl-1" style="background-color: #40bff5;" href="{{url('issue/'.$issues[$i]['id'])}}"></i></a>
 
 														<!-- Card content -->
 														<div class="card-body">

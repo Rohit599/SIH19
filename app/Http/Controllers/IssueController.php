@@ -72,7 +72,7 @@ class IssueController extends Controller
 
             $newname = $file_name;
             $issue->image = $newname;
-            $image->move('uploads', $newname);
+            $image->move('uploads/images', $newname);
         }
         $issue->save();
         $tags = generateTag(strip_tags($input['description']));
