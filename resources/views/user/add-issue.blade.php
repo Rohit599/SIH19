@@ -160,7 +160,7 @@
 						<div class="file-field">
 							<div class="btn blue-gradient btn-rounded btn-sm float-left">
 								<span><i class="fas fa-upload mr-2" aria-hidden="true"></i>upload Document</span>
-								<input type="file" name="upload_file" id="upload_file" data-max-file-size="2M" required>
+								<input type="file" name="upload_file" id="upload_file" data-max-file-size="2M">
 							</div>
 							<div class="file-path-wrapper">
 								<input type="text" class="file-path validate" placeholder="Upload your file">

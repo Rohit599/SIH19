@@ -8,7 +8,7 @@ Route::get('/', function () {
     $client = new GuzzleHttp\Client();
     $res = $client->request('GET', 'https://newsapi.org/v2/everything?q=environment&sortBy=publishedAt&apiKey=665f0a517e85463fb21017065595b4e5&sources=the-hindu', []);
     $arr = json_decode($res->getBody());
-    $issues = Issue::all()->toArray();
+    $issues = Issue::orderBy('created_at', 'desc')->take(6)->get()->toArray();
     $blogs = Blog::orderBy('created_at', 'desc')->take(3)->get();
     return view('welcome', ['news' => $arr->articles, 'issues' => $issues, 'blogs' => $blogs]);
 })->name('login');
@@ -46,6 +46,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('issues/{issue}/edit', 'IssueController@edit');
     Route::put('issues/{issue}/update', 'IssueController@update');
     Route::delete('issues/{issue}/delete', 'IssueController@delete')->name('issue.destroy');
+    Route::get('issue/{issue}', function ($id) {
+        $issue = Issue::find($id);
+        return view('issue')->with(compact('issue'));
+    });
 
     Route::get('blog/create', function () {
         return view('user.add-blog');
