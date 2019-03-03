@@ -102,26 +102,68 @@
 		  <div class="row">
 
 		     <!-- Grid column -->
-		    <div class="col-md-4 offset-md-1 mx-3 my-3">
 
-		      <!-- Featured image -->
-		      <div class="view overlay">
-		        <img src="https://mdbootstrap.com/img/Photos/Others/laptop-sm.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
-		        <a>
-		          <div class="mask rgba-white-slight"></div>
-		        </a>
-		      </div>
-
-		    </div>
-		    <!-- Grid column -->
 
 		    <!-- Grid column -->
-		    <div class="col-md-7 text-md-left ml-3 mt-3" id="progress">
+		    <div class="col-md-12 text-md-left ml-3 mt-3" id="progress">
 
 		      <!-- Excerpt -->
 		      <h2 class="h2 mb-1">PROGRESS OF ISSUE</h2>
-		      <p class="font-weight-normal">{{$issue->status}}<span id="dots">...</span><span id="more"></span></p>
 		      
+		      <div class="row">
+		        <div class="col-md-12">
+
+		          <!-- Stepers Wrapper -->
+		          <ul class="stepper stepper-horizontal">
+
+		           
+		           <!-- First Step -->
+		           <li class="completed hoverable">
+		             <a href="#!">
+		               <span class="circle">1</span>
+		               <span class="label">CREATED</span>
+		             </a>
+		           </li>
+
+		           <!-- Second Step -->
+		           <li class="{{ $issue->status >= 2 ? 'active' : '' }} hoverable">
+		             <a href="#signpetition">
+		               <span class="circle">2</span>
+		               <span class="label">SENT</span>
+		             </a>
+		           </li>
+
+		            <!-- Second Step -->
+		           <li class="{{ $issue->status >= 3 ? 'active' : '' }} hoverable">
+		             <a href="#tweet">
+		               <span class="circle">3</span>
+		               <span class="label">VIEW</span>
+		             </a>
+		           </li>
+
+		             <!-- Second Step -->
+		           <li class="{{ $issue->status >= 4 ? 'active' : '' }} hoverable">
+		             <a href="#recruit">
+		               <span class="circle">4</span>
+		               <span class="label">WORK IN PROGRESS</span>
+		             </a>
+		           </li>
+
+		           <!-- Third Step -->
+		           <li class="{{ $issue->status >= 5 ? 'active' : '' }} hoverable">
+		             <a href="#!">
+		               <span class="circle">5</span>
+		               <span class="label">SOLVED</span>
+		             </a>
+		           </li>
+
+
+
+		          </ul>
+		          <!-- /.Stepers Wrapper -->
+
+		        </div>
+		      </div>
 		 
 		    </div>
 		    <!-- Grid column -->

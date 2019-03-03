@@ -38,6 +38,7 @@ class BlogController extends Controller
             })
             ->editColumn('change_status', function (Blog $b) {
                 return '<form action="'.url('admin/blog').'" method="POST">
+                <meta name="csrf-token" content="'.csrf_token().'">
                 <select class="mdb-select" name="status">
                 <option value="1">Active</option>
                 <option value="0">Delete</option>

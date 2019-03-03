@@ -67,6 +67,7 @@ class IssueController extends Controller
             })
             ->editColumn('change_status', function (Issue $i) {
                 return '<form action="'.url('admin/issue').'" method="POST">
+                '.csrf_field().'
                 <select class="mdb-select" name="status">
                 <option value="0">Removed</option>
                 <option value="1">Created</option>

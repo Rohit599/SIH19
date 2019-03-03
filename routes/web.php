@@ -5,6 +5,7 @@ use App\Issue;
 use App\User;
 use App\IssueSign;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     $client = new GuzzleHttp\Client();
@@ -17,9 +18,9 @@ Route::get('/', function () {
 })->name('login');
 
 
-// Route::get('/test', function () {
-//     dd(sentimentScore("Air Pollution is deteriorating this environment. Polythen should be banned. I was surprised and happy. "));
-// });
+Route::get('/test', function () {
+    return view('initiatives');
+});
 
 Route::get('/issues', function () {
     $issues = Issue::withCount('signs')->orderBy('id', 'desc')->paginate(10);
@@ -61,10 +62,9 @@ Route::group(['middleware' => ['auth']], function () {
         return view('issue')->with(compact('issue', 'c'));
     });
     Route::post('issue/sign', 'IssueController@sign');
-});
-Route::get('blog/create', function () {
+    Route::get('blog/create', function () {
         return view('user.add-blog');
-})->name('userCreateBLog');
+    })->name('userCreateBLog');
     Route::post('blog', 'BlogController@store')->name('blog.store');
     Route::get('blogs', 'BlogController@index');
     Route::get('blogs/{blog}/edit', 'BlogController@edit');
@@ -75,13 +75,12 @@ Route::get('blog/create', function () {
         return view('user.blogs');
     });
     Route::get('dt_blogs', 'BlogController@data')->name('user.blogs');
-});
 
-Route::get('blogs/{id}', function ($id) {
-    $b = Blog::find($id);
-    return view('blog');
+    Route::get('blogs/{id}', function ($id) {
+        $b = Blog::find($id);
+        return view('blog');
+    });
 });
-
 Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function () {
     Route::get('/', function () {
         $user = User::count();
@@ -90,8 +89,8 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function 
         $soil_issue = Issue::where('pollution_id', '3')->count();
         $water_issue = Issue::where('pollution_id', '4')->count();
         $issue_date = Issue::select(DB::raw('DATE(created_at) as date'), DB::raw('count(id) as total'))
-                        ->whereBetween('created_at', [date("Y-m-d", strtotime('-6 days'))." 00:00:00", date("Y-m-d")." 23:59:59"])
-                        ->orderBy('date')->groupBy('date')->get()->toArray();
+                    ->whereBetween('created_at', [date("Y-m-d", strtotime('-6 days'))." 00:00:00", date("Y-m-d")." 23:59:59"])
+                    ->orderBy('date')->groupBy('date')->get()->toArray();
         $issue_date = array_column($issue_date, 'total', 'date');
         for ($i=6; $i >= 0; $i--) {
             if (!array_key_exists(date("Y-m-d", strtotime('-'.$i.' days')), $issue_date)) {
@@ -100,13 +99,13 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function 
         }
         $blog = Blog::count();
         return view('admin.home', [
-            'user' => $user,
-            'blog' => $blog,
-            'air_issue' => $air_issue,
-            'noise_issue' => $noise_issue,
-            'soil_issue' => $soil_issue,
-            'water_issue' => $water_issue,
-            'issue_date' => $issue_date
+        'user' => $user,
+        'blog' => $blog,
+        'air_issue' => $air_issue,
+        'noise_issue' => $noise_issue,
+        'soil_issue' => $soil_issue,
+        'water_issue' => $water_issue,
+        'issue_date' => $issue_date
         ]);
     });
 
@@ -124,4 +123,11 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth','admin']], function 
         return view('admin.blogs');
     });
     Route::get('dt_blogs', 'Admin\BlogController@data')->name('get.blogs');
+    Route::post('issue', function (Request $request) {
+        $input = $request->all();
+        $i = Issue::find($input['id']);
+        $i->status = $input['status'];
+        $i->save();
+        return back()->with(['msg' =>'Status of issue updated successfully.', 'class' => 'alert-success']);
+    });
 });

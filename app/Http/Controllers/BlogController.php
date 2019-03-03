@@ -140,6 +140,7 @@ class BlogController extends Controller
             ->editColumn('change_status', function (Blog $b) {
                 return '
                 <form action="'.url('blog/edit').'" method="POST">
+                <meta name="csrf-token" content="'.csrf_token().'">
                 <input type="hidden" value="'.$b->id.'" name="id">
                 <br>
                 <input type="submit" class="btn btn-sm btn-primary" value="Edit">

@@ -9,6 +9,7 @@
 <body class="fixed-sn deep-purple-skin">
     @include('includes.admin_header')
     <main>
+    	@include('includes.msg')
 		@yield('content')
 	</main>
 	@include('includes.admin_footer')

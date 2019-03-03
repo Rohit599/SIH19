@@ -32,6 +32,7 @@ class UserController extends Controller
             })
             ->editColumn('change_status', function (User $u) {
                 return '<form action="'.url('admin/user').'" method="POST">
+                <meta name="csrf-token" content="'.csrf_token().'">
                 <select class="mdb-select" name="status">
                 <option value="1">Active</option>
                 <option value="0">Block</option>
