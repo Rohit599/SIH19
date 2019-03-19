@@ -19,8 +19,34 @@ Proposal can be found [here](https://www.sih.gov.in/uploads/template/India%20vs%
 -   Ctype PHP Extension
 -   JSON PHP Extension
 -   BCMath PHP Extension
+-   Paython 3.x
 
 ## Installing
+
+### ML (Machine Learning) Part
+
+One time commands
+
+```shell
+git clone https://github.com/rahul2240/flask-api-spam
+cd flask-api-spam/
+sudo apt install python3-pip
+pip3 install flask
+pip3 install -U textblob
+python3 -m textblob.download_corpora
+pip3 install sklearn
+pip3 install pandas
+pip3 install rake_nltk
+```
+
+Run the deployment server
+
+```shell
+python3 app.py
+```
+By default deplyment server will run at: http://0.0.0.0:8800/
+
+### Web Part
 
 Clone this repo or download it on your local system.
 
